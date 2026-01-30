@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://dc844wcasmwtp"]
 
+[ext_resource type="PackedScene" uid="uid://d0thv83qywg80" path="res://player/player.tscn" id="1_6xmxd"]
+[ext_resource type="Script" uid="uid://cuypqiviyjwoo" path="res://world/world.gd" id="1_tcf2h"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_g312j"]
 
 [sub_resource type="Gradient" id="Gradient_g312j"]
@@ -66,15 +69,13 @@ lod0_range = 128.0
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_mmdvd")])
 
 [node name="World" type="Node3D" unique_id=1578379085]
+script = ExtResource("1_tcf2h")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1339824152]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97607124, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.729153, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=438000989]
 mesh = SubResource("BoxMesh_g312j")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1471303299]
-transform = Transform3D(1, 0, 0, 0, 0.9113027, 0.41173705, 0, -0.41173705, 0.9113027, 0, 2.2803733, 4.2147675)
 
 [node name="Terrain3D" type="Terrain3D" parent="." unique_id=1138636014]
 data_directory = "res://terrain3d_data"
@@ -83,3 +84,6 @@ assets = SubResource("Terrain3DAssets_fn3g3")
 show_checkered = true
 top_level = true
 metadata/_edit_lock_ = true
+
+[node name="Player" parent="." unique_id=652687026 instance=ExtResource("1_6xmxd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702957, 2.5573783, 0)
