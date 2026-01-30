@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d0thv83qywg80"]
+
+[ext_resource type="Script" uid="uid://be8bf0g5jut0b" path="res://player/player.gd" id="1_oul6g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
+
+[node name="Player" type="CharacterBody3D" unique_id=652687026]
+script = ExtResource("1_oul6g")
+
+[node name="CameraHolder" type="Node3D" parent="." unique_id=1902146556]
+
+[node name="Camera3D" type="Camera3D" parent="CameraHolder" unique_id=153837092]
+
+[node name="LabelFPS" type="Label" parent="." unique_id=478737786]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -54.0
+offset_right = 94.0
+grow_vertical = 0
+text = "FPS: "
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=764173173]
+shape = SubResource("CapsuleShape3D_oul6g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=559776829]
+mesh = SubResource("CapsuleMesh_oul6g")
