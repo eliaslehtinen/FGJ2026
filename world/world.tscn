@@ -2,8 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://d0thv83qywg80" path="res://player/player.tscn" id="1_6xmxd"]
 [ext_resource type="Script" uid="uid://cuypqiviyjwoo" path="res://world/world.gd" id="1_tcf2h"]
+[ext_resource type="Texture2D" uid="uid://bf2u23ry1wjaw" path="res://graphics/textures/dirt_ground_DIFF.png" id="2_h5o24"]
+[ext_resource type="Texture2D" uid="uid://g6tkodopfn21" path="res://graphics/textures/dirt_ground_NORMAL.png" id="3_mmdvd"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_g312j"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tcf2h"]
+sky_top_color = Color(0.25397104, 0.4701029, 0.67467964, 1)
+sky_horizon_color = Color(0.61521494, 0.6228155, 0.63801116, 1)
+sky_curve = 0.19792612
+
+[sub_resource type="Sky" id="Sky_4717r"]
+sky_material = SubResource("ProceduralSkyMaterial_tcf2h")
+
+[sub_resource type="Environment" id="Environment_tcf2h"]
+background_mode = 2
+background_energy_multiplier = 1.25
+sky = SubResource("Sky_4717r")
 
 [sub_resource type="Gradient" id="Gradient_g312j"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -45,7 +58,7 @@ _shader_parameters = {
 &"noise_texture": SubResource("NoiseTexture2D_tcf2h"),
 &"projection_threshold": 0.8
 }
-show_checkered = true
+world_background = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5o24"]
 transparency = 4
@@ -65,11 +78,43 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_tcf2h"]
+name = "dirt_ground_DIFF"
+albedo_texture = ExtResource("2_h5o24")
+normal_texture = ExtResource("3_mmdvd")
+uv_scale = 0.2
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_fn3g3"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_mmdvd")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_tcf2h")])
+
+[sub_resource type="BoxMesh" id="BoxMesh_g312j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_tcf2h"]
 
 [node name="World" type="Node3D" unique_id=1578379085]
 script = ExtResource("1_tcf2h")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1992858761]
+environment = SubResource("Environment_tcf2h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=174881653]
+transform = Transform3D(0.7809104, -0.568469, -0.25888655, 1.40271625e-08, -0.41445503, 0.9100698, -0.62464327, -0.710683, -0.3236522, 0, 10.613327, 0)
+light_color = Color(0.85223806, 0.7068773, 0.48220432, 1)
+shadow_enabled = true
+
+[node name="Terrain3D" type="Terrain3D" parent="." unique_id=1138636014]
+data_directory = "res://terrain3d_data"
+material = SubResource("Terrain3DMaterial_4717r")
+assets = SubResource("Terrain3DAssets_fn3g3")
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." unique_id=652687026 instance=ExtResource("1_6xmxd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702957, 1.4977808, 0)
+speed = 5.0
+sprint_speed = 7.0
+sensitivity = 6.0
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1339824152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.729153, 0)
@@ -77,13 +122,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.729153, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=438000989]
 mesh = SubResource("BoxMesh_g312j")
 
-[node name="Terrain3D" type="Terrain3D" parent="." unique_id=1138636014]
-data_directory = "res://terrain3d_data"
-material = SubResource("Terrain3DMaterial_4717r")
-assets = SubResource("Terrain3DAssets_fn3g3")
-show_checkered = true
-top_level = true
-metadata/_edit_lock_ = true
+[node name="Node3D4" type="Node3D" parent="." unique_id=1477776220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2843463, 2.7218885, 2.4643168)
 
-[node name="Player" parent="." unique_id=652687026 instance=ExtResource("1_6xmxd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702957, 2.5573783, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D4" unique_id=1278260670]
+mesh = SubResource("SphereMesh_tcf2h")
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=245912495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.55146, 1.729153, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2" unique_id=1728076684]
+mesh = SubResource("BoxMesh_g312j")
+
+[node name="Node3D3" type="Node3D" parent="." unique_id=660883563]
+transform = Transform3D(2.39081, 0, 0, 0, 2.5913196, 0, 0, 0, 2.5913196, 3.9751654, 2.6064038, 4.0323377)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3" unique_id=1302498368]
+mesh = SubResource("BoxMesh_g312j")
