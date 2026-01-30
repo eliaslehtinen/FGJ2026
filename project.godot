@@ -11,12 +11,15 @@ config_version=5
 [application]
 
 config/name="Control+X"
-run/main_scene="uid://dc844wcasmwtp"
+run/main_scene="uid://4fldhbdmidvu"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1500
+window/size/viewport_height=760
+window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
 [editor_plugins]

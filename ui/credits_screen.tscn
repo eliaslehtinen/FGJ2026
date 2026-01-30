@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://5eeg44mlhf7w"]
+
+[ext_resource type="Script" uid="uid://cwspsyuudkqy6" path="res://ui/credits_screen.gd" id="1_de18o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaxj0"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.823529)
+
+[node name="CreditsScreen" type="Control" unique_id=1461842822]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_de18o")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1225738344]
+layout_mode = 1
+offset_right = 1902.0
+offset_bottom = 803.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yaxj0")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=830898262]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=462291384]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer3" unique_id=763562266]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer" unique_id=1852540116]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer2" unique_id=577049825]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Programming and design:"
+
+[node name="Label10" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer2" unique_id=1818231709]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Programming:"
+
+[node name="Label8" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer2" unique_id=140348612]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "3D and level design:"
+
+[node name="Label11" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer2" unique_id=2004548053]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "3D and level design:"
+
+[node name="Label9" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer2" unique_id=1500556545]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Design and audio:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer" unique_id=1297600338]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer" unique_id=1272110572]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Juuso Piippo"
+
+[node name="Label6" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer" unique_id=632135083]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Elias Lehtinen"
+
+[node name="Label4" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer" unique_id=581496474]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Eetu Rantakangas"
+
+[node name="Label7" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer" unique_id=791454366]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Lauri Inki"
+
+[node name="Label5" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer" unique_id=1663465392]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Samiin Agampodi"
+
+[node name="MarginContainer" type="PanelContainer" parent="PanelContainer/MarginContainer" unique_id=2039793812]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="ButtonBack" type="Button" parent="PanelContainer/MarginContainer/MarginContainer" unique_id=404525708]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 70
+text = "Back"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/MarginContainer/ButtonBack" to="." method="_on_button_back_pressed"]

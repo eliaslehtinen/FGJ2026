@@ -31,6 +31,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Movement handling
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
@@ -51,7 +54,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
-	#print("Velocity ", velocity.length())
 	label_fps.text = "FPS: " + str(Engine.get_frames_per_second())
 	
 	move_and_slide()
