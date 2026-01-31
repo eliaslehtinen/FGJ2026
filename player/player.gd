@@ -14,6 +14,12 @@ const BLOOD_PARTICLE: PackedScene = preload("res://particles/blood_particle.tscn
 @export var jump_velocity: float = 5.0
 @export_group("Mouse sensitivity")
 @export var sensitivity: float = 4.0
+# Variables related to head bobbing (mask bobbing)
+@export_group("headbob")
+@export var headbob_frequency := 2.0
+@export var headbob_amplitude := 0.05
+var headbob_time := 0.0
+
 
 const SENSITIVTY_DIVIDER: int = 100
 var gravity_multiplier: float = 1.2
@@ -138,7 +144,7 @@ func attacking() -> void:
 			attack_tween.tween_property(weapon_holder, "position:x", 0.1, 0.5)
 		AttackState.ATTACKING:
 			## TODO:
-			attack_state = AttackState.HOVERING
+			attack_state = AttackState.NONE
 			return
 
 
@@ -186,3 +192,12 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+	
+	headbob_time += delta * velocity.length() * float(is_on_floor())
+	$CameraHolder/Camera3D.transform.origin = headbob(headbob_time)
+
+func headbob(headbob_time: float):
+	var headbob_position = Vector3.ZERO
+	headbob_position.y = sin(headbob_time * headbob_frequency) * headbob_amplitude
+	headbob_position.x = sin(headbob_time * headbob_frequency / 2) * headbob_amplitude
+	return headbob_position
