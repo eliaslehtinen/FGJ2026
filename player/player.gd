@@ -145,6 +145,20 @@ func attacking() -> void:
 
 			weapon_area.monitoring = true
 			attack_tween = create_tween().set_parallel(true)
+			var wh_x: float = weapon_holder.position.x
+			if wh_x > 0.2: # Right
+				print("Over 0.2")
+				attack_tween.tween_property(weapon_holder, "position:x", 0.7, 0.3)
+			elif wh_x > 0.12: # Slightly right
+				print("Over 0.12")
+				attack_tween.tween_property(weapon_holder, "position:x", 0.35, 0.3)
+			elif wh_x < -0.05: # Left
+				print("Less -0.05")
+				attack_tween.tween_property(weapon_holder, "position:x", -0.35, 0.3)
+			else: # Middle
+				attack_tween.tween_property(weapon_holder, "position:x", 0.15, 0.3)
+
+
 			## Final load
 			attack_tween.tween_property(camera_holder, "rotation:x", deg_to_rad(75), 0.3).from_current()
 			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(65), 0.4).from_current()
@@ -152,9 +166,10 @@ func attacking() -> void:
 			## Swing
 			attack_tween.chain().tween_property(camera_holder, "rotation:x", deg_to_rad(-30), 0.15).set_delay(0.05)
 			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(-80), 0.2)
-			attack_tween.tween_property(weapon_holder, "rotation:z", deg_to_rad(-5), 0.2)
+			attack_tween.tween_property(weapon_holder, "rotation:z", deg_to_rad(0), 0.2)
 			await attack_tween.finished
 			print("Tween attack finish")
+			weapon_area.monitoring = false
 			timer_attack.start()
 			await timer_attack.timeout
 
@@ -179,13 +194,13 @@ func _physics_process(delta: float) -> void:
 	#print(weapon_holder.position.x)
 	check_debug_controls()
 
-	if attack_state == AttackState.NONE:
+	if attack_state == AttackState.NONE and is_on_floor():
 		if Input.is_action_just_pressed("attack"):
 			starting_attack_rot_y = rotation.y
 			#print("Starting attack rot y", starting_attack_rot_y)
 			attack_state = AttackState.STARTING
 
-	if attack_state != AttackState.NONE:
+	if attack_state != AttackState.NONE and is_on_floor():
 		attacking()
 		return
 
@@ -215,12 +230,8 @@ func _physics_process(delta: float) -> void:
 	$CameraHolder/Camera3D.transform.origin = headbob(headbob_time)
 
 
-func headbob(headbob_time: float) -> Vector3:
+func headbob(hb_time: float) -> Vector3:
 	var headbob_position = Vector3.ZERO
-	headbob_position.y = sin(headbob_time * headbob_frequency) * headbob_amplitude
-	headbob_position.x = sin(headbob_time * headbob_frequency / 2) * headbob_amplitude
+	headbob_position.y = sin(hb_time * headbob_frequency) * headbob_amplitude
+	headbob_position.x = sin(hb_time * headbob_frequency / 2) * headbob_amplitude
 	return headbob_position
-
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	pass # Replace with function body.

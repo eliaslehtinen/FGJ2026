@@ -5,5 +5,6 @@ extends Node3D
 func _ready() -> void:
 	for child in physical_bone_simulator.get_children(true):
 		if child is PhysicalBone3D:
-			child.collision_layer = 2
-			child.hide()
+			var _name: String = child.name
+			if not _name.contains("spine"):
+				child.collision_layer = 2
