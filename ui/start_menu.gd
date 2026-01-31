@@ -1,7 +1,7 @@
 extends Node3D
 class_name StartMenu
 
-const WORLD: PackedScene = preload("uid://dc844wcasmwtp")
+const WORLD: PackedScene = preload("res://world/world.tscn")
 
 @export var skip_start_menu: bool = false
 

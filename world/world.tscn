@@ -1,17 +1,55 @@
-[gd_scene format=3 uid="uid://dc844wcasmwtp"]
+[gd_scene format=3 uid="uid://b05eft2p21cfm"]
 
 [ext_resource type="PackedScene" uid="uid://d0thv83qywg80" path="res://player/player.tscn" id="1_6xmxd"]
 [ext_resource type="Script" uid="uid://cuypqiviyjwoo" path="res://world/world.gd" id="1_tcf2h"]
+[ext_resource type="Shader" uid="uid://d2bmjh6ikr163" path="res://shaders/sky.gdshader" id="2_fn3g3"]
 [ext_resource type="Texture2D" uid="uid://bf2u23ry1wjaw" path="res://graphics/textures/dirt_ground_DIFF.png" id="2_h5o24"]
 [ext_resource type="Texture2D" uid="uid://g6tkodopfn21" path="res://graphics/textures/dirt_ground_NORMAL.png" id="3_mmdvd"]
+[ext_resource type="PackedScene" uid="uid://dlkeslx618x5g" path="res://graphics/3d/Execution.blend" id="5_mmdvd"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tcf2h"]
-sky_top_color = Color(0.25397104, 0.4701029, 0.67467964, 1)
-sky_horizon_color = Color(0.61521494, 0.6228155, 0.63801116, 1)
-sky_curve = 0.19792612
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h5o24"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h5o24"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_h5o24")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_mmdvd"]
+offsets = PackedFloat32Array(0.19499986, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mmdvd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mmdvd"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_mmdvd")
+color_ramp = SubResource("Gradient_mmdvd")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmdvd"]
+shader = ExtResource("2_fn3g3")
+shader_parameter/sky_top_color = Color(0.25397104, 0.4701029, 0.67467964, 1)
+shader_parameter/sky_horizon_color = Color(0.6226632, 0.7300058, 0.82236785, 1)
+shader_parameter/inv_sky_curve = 3.03143416908606
+shader_parameter/ground_bottom_color = Color(0.3856025, 0.5887152, 0.66706324, 1)
+shader_parameter/ground_horizon_color = Color(0.79727834, 0.8026069, 0.8132582, 1)
+shader_parameter/inv_ground_curve = 30.000000670552268
+shader_parameter/sun_angle_max = 0.8660254
+shader_parameter/inv_sun_curve = 22.782017
+shader_parameter/exposure = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/cloud_texture1 = SubResource("NoiseTexture2D_h5o24")
+shader_parameter/cloud_texture2 = SubResource("NoiseTexture2D_mmdvd")
+shader_parameter/cloud_direction1 = Vector2(-1, 1)
+shader_parameter/cloud_direction2 = Vector2(1, -1)
+shader_parameter/cloud_scale = Vector2(0.07, 0.06)
+shader_parameter/cloud_distance = 0.035
+shader_parameter/cloud_speed1 = 0.001
+shader_parameter/cloud_speed2 = 0.003
 
 [sub_resource type="Sky" id="Sky_4717r"]
-sky_material = SubResource("ProceduralSkyMaterial_tcf2h")
+sky_material = SubResource("ShaderMaterial_mmdvd")
 
 [sub_resource type="Environment" id="Environment_tcf2h"]
 background_mode = 2
@@ -107,6 +145,7 @@ shadow_enabled = true
 data_directory = "res://terrain3d_data"
 material = SubResource("Terrain3DMaterial_4717r")
 assets = SubResource("Terrain3DAssets_fn3g3")
+collision_mode = 4
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -139,3 +178,6 @@ transform = Transform3D(2.39081, 0, 0, 0, 2.5913196, 0, 0, 0, 2.5913196, 3.97516
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3" unique_id=1302498368]
 mesh = SubResource("BoxMesh_g312j")
+
+[node name="Execution" parent="." unique_id=660222358 instance=ExtResource("5_mmdvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.708015, 5.931369, -64.31114)
