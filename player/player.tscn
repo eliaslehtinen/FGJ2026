@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0thv83qywg80"]
 
 [ext_resource type="Script" uid="uid://be8bf0g5jut0b" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="PackedScene" uid="uid://cwarosabjdh0w" path="res://player/hud.tscn" id="2_rkbax"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
 
@@ -8,6 +9,8 @@
 
 [node name="Player" type="CharacterBody3D" unique_id=652687026]
 script = ExtResource("1_oul6g")
+
+[node name="HUD" parent="." unique_id=977719269 instance=ExtResource("2_rkbax")]
 
 [node name="CameraHolder" type="Node3D" parent="." unique_id=1902146556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65476334, 0)

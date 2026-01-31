@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dm2iihrb58r76"]
+
+[ext_resource type="Script" uid="uid://dfck77f3kai3f" path="res://world/world_ui.gd" id="1_3d62h"]
+
+[node name="WorldUI" type="Control" unique_id=1036882639]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+mouse_filter = 1
+script = ExtResource("1_3d62h")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1968635963]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.75
+offset_top = -92.5
+offset_right = 146.75
+offset_bottom = 92.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1424289571]
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="LabelPaused" type="Label" parent="PanelContainer/VBoxContainer" unique_id=4158519]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonQuit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1284076633]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

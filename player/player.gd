@@ -1,6 +1,10 @@
 extends CharacterBody3D
 class_name Player
 
+const BLOOD_PARTICLE: PackedScene = preload("res://particles/blood_particle.tscn")
+
+@onready var hud: SubViewportContainer = $HUD
+
 @export_group("Movement stats")
 @export var speed: float = 6.5
 @export var sprint_speed: float = 9.5
@@ -29,10 +33,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_holder.rotation.x = clampf(camera_holder.rotation.x, deg_to_rad(-87), deg_to_rad(87))
 
 
-# Movement handling
+func check_debug_controls() -> void:
+	if Input.is_action_just_pressed("particle"):
+		var particle := BLOOD_PARTICLE.instantiate()
+		get_tree().root.add_child(particle)
+		print_debug("Blood particle instantiated")
+		particle.global_position = global_position - global_basis.z * 1.0
+	if Input.is_action_just_pressed("mask"):
+		hud.visible = not hud.visible
+
+
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
+	check_debug_controls()
 
 	if not is_on_floor():
 		velocity += get_gravity() * gravity_multiplier * delta
