@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var player: Player = $Player
 @onready var world_ui: Control = $WorldUI
+@onready var terrain_3d: Terrain3D = $Terrain3D
 
 var used_at_start_menu: bool = false
 
@@ -12,6 +13,9 @@ func _ready() -> void:
 		used_at_start_menu = true
 		player.queue_free()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		return
+
+	terrain_3d.set_camera(player.camera)
 
 
 func _process(_delta: float) -> void:

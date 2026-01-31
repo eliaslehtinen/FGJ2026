@@ -16,6 +16,12 @@ size = Vector3(5.3711243, 0.37841797, 3.5825806)
 
 [node name="Player" type="CharacterBody3D" unique_id=652687026]
 script = ExtResource("1_oul6g")
+speed = null
+sprint_speed = null
+acceleration = null
+jump_velocity = null
+sensitivity = null
+headbob_frequency = null
 headbob_amplitude = 0.03
 
 [node name="HUD" parent="." unique_id=977719269 instance=ExtResource("2_rkbax")]
@@ -29,6 +35,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65476334, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder" unique_id=153837092]
 
+[node name="RayCast3D" type="RayCast3D" parent="CameraHolder" unique_id=129458465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013876796, -0.09876251)
+target_position = Vector3(0, 0, -3)
+collision_mask = 4
+hit_from_inside = true
+collide_with_areas = true
+debug_shape_custom_color = Color(0.8938228, 0, 0.4493507, 1)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=764173173]
 shape = SubResource("CapsuleShape3D_oul6g")
 
@@ -38,7 +52,7 @@ mesh = SubResource("CapsuleMesh_oul6g")
 [node name="WeaponHolder" type="Node3D" parent="." unique_id=521219202]
 script = ExtResource("3_yw30f")
 
-[node name="axe" parent="WeaponHolder" unique_id=699436866 instance=ExtResource("3_g1dw6")]
+[node name="axe" parent="WeaponHolder" unique_id=336882533 instance=ExtResource("3_g1dw6")]
 transform = Transform3D(-0.08455249, 0.17945506, 0.025430823, 0.04526732, 0.048081003, -0.18878308, -0.17550427, -0.074054524, -0.06094415, -0.4957018, 0, -0.8963047)
 
 [node name="Area3D" type="Area3D" parent="WeaponHolder/axe" unique_id=472990583]
@@ -60,6 +74,9 @@ wait_time = 0.4
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2079982056]
+
+[node name="DragPoint" type="Node3D" parent="." unique_id=896064043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46417236, -2.0115242)
 
 [connection signal="body_entered" from="WeaponHolder/axe/Area3D" to="WeaponHolder" method="_on_area_3d_body_entered"]
 
