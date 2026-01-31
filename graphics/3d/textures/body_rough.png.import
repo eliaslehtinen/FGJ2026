@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://but1p7o286jlr"
-path.s3tc="res://.godot/imported/wood_plank_DIFF.png-77c76c704e8ffc946e2b020807b3935c.s3tc.ctex"
+uid="uid://dxwfcmgn0a7vw"
+path.s3tc="res://.godot/imported/body_rough.png-9be6a5ec5ae3b6718e20fd091f2c4687.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://graphics/textures/wood_plank_DIFF.png"
-dest_files=["res://.godot/imported/wood_plank_DIFF.png-77c76c704e8ffc946e2b020807b3935c.s3tc.ctex"]
+source_file="res://graphics/3d/textures/body_rough.png"
+dest_files=["res://.godot/imported/body_rough.png-9be6a5ec5ae3b6718e20fd091f2c4687.s3tc.ctex"]
 
 [params]
 
