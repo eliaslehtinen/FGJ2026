@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://juam5berkyu1"]
+
+[ext_resource type="PackedScene" uid="uid://2pubwjgqab6s" path="res://world/castle_tower_with_material.tscn" id="1_6k1y5"]
+
+[node name="castle_tower_with_material_large" unique_id=650376445 instance=ExtResource("1_6k1y5")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

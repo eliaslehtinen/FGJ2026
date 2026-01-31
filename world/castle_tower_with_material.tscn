@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://2pubwjgqab6s"]
+
+[ext_resource type="PackedScene" uid="uid://diiehfj6875ly" path="res://graphics/3d/castle_tower.blend" id="1_qifeg"]
+[ext_resource type="Material" uid="uid://brab6g3ytv7wf" path="res://graphics/textures/stone_wall_material.tres" id="2_4aes6"]
+
+[node name="castle_tower_with_material" unique_id=650376445 instance=ExtResource("1_qifeg")]
+
+[node name="tower" parent="." index="0" unique_id=1959924102]
+surface_material_override/0 = ExtResource("2_4aes6")
