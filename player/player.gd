@@ -7,6 +7,8 @@ const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tsc
 @onready var camera_holder: Node3D = $CameraHolder
 @onready var weapon_holder: WeaponHolder = $WeaponHolder
 
+@onready var audio_walk: AudioStreamPlayer = $AudioWalk
+
 @export_group("Movement stats")
 @export var speed: float = 6.5
 @export var sprint_speed: float = 9.5
