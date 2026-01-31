@@ -12,7 +12,7 @@ height = 1.8
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yw30f"]
-size = Vector3(4.701233, 0.37841797, 3.1918945)
+size = Vector3(5.3711243, 0.37841797, 3.5825806)
 
 [node name="Player" type="CharacterBody3D" unique_id=652687026]
 script = ExtResource("1_oul6g")
@@ -46,7 +46,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WeaponHolder/axe/Area3D" unique_id=1084505521]
-transform = Transform3D(0.9999999, 0, 0, -2.3841858e-07, 1, 0, -5.9604645e-08, 0, 1, 0.11650753, -0.046903253, -4.9768057)
+transform = Transform3D(0.9999999, 0, 0, -2.3841858e-07, 1, 0, -5.9604645e-08, 0, 1, 0.45145226, -0.046902657, -4.7814627)
 shape = SubResource("BoxShape3D_yw30f")
 
 [node name="LabelState" type="Label" parent="." unique_id=1190063454]

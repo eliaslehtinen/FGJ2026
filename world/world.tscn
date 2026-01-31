@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://duoulfqt8q68d" path="res://world/castle_wall_with_material.tscn" id="12_dqqhb"]
 [ext_resource type="PackedScene" uid="uid://juam5berkyu1" path="res://world/castle_tower_with_material_large.tscn" id="13_ocfjn"]
 [ext_resource type="PackedScene" uid="uid://u8cq57cya00a" path="res://graphics/3d/cabin.blend" id="14_dqqhb"]
+[ext_resource type="PackedScene" uid="uid://s5c4vpug6dn" path="res://skeletor/skeletor.tscn" id="15_b2suy"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h5o24"]
 
@@ -37,10 +38,10 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmdvd"]
 shader = ExtResource("2_fn3g3")
-shader_parameter/sky_top_color = Color(0.25397104, 0.4701029, 0.67467964, 1)
-shader_parameter/sky_horizon_color = Color(0.6226632, 0.7300058, 0.82236785, 1)
+shader_parameter/sky_top_color = Color(0.17656538, 0.48176306, 0.53826636, 1)
+shader_parameter/sky_horizon_color = Color(0.78210056, 0.9202193, 0.9990614, 1)
 shader_parameter/inv_sky_curve = 3.03143416908606
-shader_parameter/ground_bottom_color = Color(0.3856025, 0.5887152, 0.66706324, 1)
+shader_parameter/ground_bottom_color = Color(0.68435925, 0.82960063, 0.89274985, 1)
 shader_parameter/ground_horizon_color = Color(0.79727834, 0.8026069, 0.8132582, 1)
 shader_parameter/inv_ground_curve = 30.000000670552268
 shader_parameter/sun_angle_max = 0.8660254
@@ -61,7 +62,7 @@ sky_material = SubResource("ShaderMaterial_mmdvd")
 
 [sub_resource type="Environment" id="Environment_tcf2h"]
 background_mode = 2
-background_energy_multiplier = 1.25
+background_energy_multiplier = 0.7
 sky = SubResource("Sky_4717r")
 
 [sub_resource type="Gradient" id="Gradient_g312j"]
@@ -229,3 +230,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04661846, 9.580503, -0.0280
 
 [node name="cabin" parent="." unique_id=1631016941 instance=ExtResource("14_dqqhb")]
 transform = Transform3D(-0.17636307, 0, 1.9922088, 0, 2, 0, -1.9922088, 0, -0.17636307, 27.34597, 0, -41.10459)
+
+[node name="Skeletor" parent="." unique_id=1062086467 instance=ExtResource("15_b2suy")]
+transform = Transform3D(0.99877006, 0, -0.049581923, 0.04597027, 0.37467134, 0.92601746, 0.018576927, -0.9271578, 0.37421054, 5.6536055, 0.28456736, 0)

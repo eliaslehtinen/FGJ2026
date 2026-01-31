@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-const BLOOD_PARTICLE: PackedScene = preload("res://particles/blood_particle.tscn")
+const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tscn")
 
 @onready var hud: SubViewportContainer = $HUD
 @onready var camera_holder: Node3D = $CameraHolder
@@ -91,10 +91,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func check_debug_controls() -> void:
 	# P
 	if Input.is_action_just_pressed("particle"):
-		var particle := BLOOD_PARTICLE.instantiate()
-		get_tree().root.add_child(particle)
+		var particles := BLOOD_PARTICLES.instantiate()
+		get_tree().root.add_child(particles)
 		print_debug("Blood particle instantiated")
-		particle.global_position = global_position - global_basis.z * 1.0
+		particles.global_position = global_position - global_basis.z * 1.0
 	# M
 	if Input.is_action_just_pressed("mask"):
 		hud.visible = not hud.visible
