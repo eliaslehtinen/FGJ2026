@@ -10,7 +10,6 @@ const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tsc
 @onready var weapon_holder: WeaponHolder = $WeaponHolder
 @onready var drag_point: Node3D = $DragPoint
 
-@onready var audio_walk: AudioStreamPlayer = $AudioWalk
 
 @export_group("Movement stats")
 @export var speed: float = 6.5
@@ -24,6 +23,10 @@ const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tsc
 @export var headbob_frequency := 2.0
 @export var headbob_amplitude := 0.05
 var headbob_time := 0.0
+
+@onready var audio_walk_ground: AudioStreamPlayer = $AudioWalkGround
+@onready var audio_walk_wood: AudioStreamPlayer = $AudioWalkWood
+@onready var is_on_wood = false
 
 const SENSITIVTY_DIVIDER: int = 100
 var gravity_multiplier: float = 1.2
@@ -258,6 +261,12 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	if velocity != Vector3.ZERO and is_on_floor():
+		if is_on_wood and not audio_walk_wood.playing:
+			audio_walk_wood.play()
+		elif not audio_walk_ground.playing:
+			audio_walk_ground.play()
+
 	headbob_time += delta * velocity.length() * float(is_on_floor())
 	$CameraHolder/Camera3D.transform.origin = headbob(headbob_time)
 
@@ -267,3 +276,11 @@ func headbob(hb_time: float) -> Vector3:
 	headbob_position.y = sin(hb_time * headbob_frequency) * headbob_amplitude
 	headbob_position.x = sin(hb_time * headbob_frequency / 2) * headbob_amplitude
 	return headbob_position
+
+
+func player_entered_on_wood(body: Node3D) -> void:
+	is_on_wood = true
+
+
+func player_exited_wood(body: Node3D) -> void:
+	is_on_wood = false
