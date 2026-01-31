@@ -33,7 +33,7 @@ func _on_button_quit_pressed() -> void:
 
 
 func start_game() -> void:
-	# Throws error can't remove child 
+	# Throws error can't remove child
 	# because parent node is busy if no call_deferred
 	get_tree().call_deferred("change_scene_to_packed", WORLD)
 

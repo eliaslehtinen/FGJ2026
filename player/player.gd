@@ -10,9 +10,9 @@ class_name Player
 @export var sensitivity: float = 4.0
 
 const SENSITIVTY_DIVIDER: int = 100
+var gravity_multiplier: float = 1.2
 
 @onready var camera_holder: Node3D = $CameraHolder
-
 @onready var label_fps: Label = $LabelFPS
 
 func _ready() -> void:
@@ -33,27 +33,27 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
-	
+
 	if not is_on_floor():
-		velocity += get_gravity() * delta
-	
+		velocity += get_gravity() * gravity_multiplier * delta
+
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = jump_velocity
-	
+
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
+
 	var sprinting: bool = Input.is_action_pressed("sprint")
 	var actual_speed: float = sprint_speed if sprinting else speed
-	
+
 	if direction:
 		velocity.x = direction.x * actual_speed
 		velocity.z = direction.z * actual_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-	
+
 	label_fps.text = "FPS: " + str(Engine.get_frames_per_second())
-	
+
 	move_and_slide()

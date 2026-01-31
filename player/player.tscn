@@ -10,6 +10,7 @@
 script = ExtResource("1_oul6g")
 
 [node name="CameraHolder" type="Node3D" parent="." unique_id=1902146556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65476334, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder" unique_id=153837092]
 
@@ -17,9 +18,12 @@ script = ExtResource("1_oul6g")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 66.0
+offset_left = 8.0
+offset_top = -31.0
+offset_right = 44.0
+offset_bottom = -8.0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 24
 text = "FPS: "
 horizontal_alignment = 1
 
