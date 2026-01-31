@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cwarosabjdh0w"]
+
+[ext_resource type="PackedScene" uid="uid://c5f8x4p2lur4u" path="res://player/2d_hood.tscn" id="1_2mhk3"]
+
+[node name="HUD" type="SubViewportContainer" unique_id=977719269]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=522104854]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="2dHood" parent="SubViewport" unique_id=1823347437 instance=ExtResource("1_2mhk3")]
