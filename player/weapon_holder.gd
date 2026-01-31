@@ -9,5 +9,6 @@ func _ready() -> void:
 	current_weapon = axe
 
 
-func _process(_delta: float) -> void:
-	pass
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is PhysicalBone3D:
+		print(body.name)

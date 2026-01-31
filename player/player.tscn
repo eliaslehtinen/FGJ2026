@@ -11,6 +11,9 @@ height = 1.8
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_yw30f"]
+size = Vector3(4.701233, 0.37841797, 3.1918945)
+
 [node name="Player" type="CharacterBody3D" unique_id=652687026]
 script = ExtResource("1_oul6g")
 headbob_amplitude = 0.03
@@ -18,10 +21,7 @@ headbob_amplitude = 0.03
 [node name="HUD" parent="." unique_id=977719269 instance=ExtResource("2_rkbax")]
 material = null
 
-[node name="SubViewport" parent="HUD" index="0" unique_id=522104854]
-size = Vector2i(1500, 700)
-
-[node name="2dHood" parent="HUD/SubViewport" index="0" unique_id=1823347437]
+[node name="2dHood" parent="HUD/SubViewport" parent_id_path=PackedInt32Array(977719269, 522104854) index="0" unique_id=1823347437]
 player = NodePath("../../..")
 
 [node name="CameraHolder" type="Node3D" parent="." unique_id=1902146556]
@@ -41,6 +41,14 @@ script = ExtResource("3_yw30f")
 [node name="axe" parent="WeaponHolder" unique_id=699436866 instance=ExtResource("3_g1dw6")]
 transform = Transform3D(-0.08455249, 0.17945506, 0.025430823, 0.04526732, 0.048081003, -0.18878308, -0.17550427, -0.074054524, -0.06094415, -0.4957018, 0, -0.8963047)
 
+[node name="Area3D" type="Area3D" parent="WeaponHolder/axe" unique_id=472990583]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WeaponHolder/axe/Area3D" unique_id=1084505521]
+transform = Transform3D(0.9999999, 0, 0, -2.3841858e-07, 1, 0, -5.9604645e-08, 0, 1, 0.11650753, -0.046903253, -4.9768057)
+shape = SubResource("BoxShape3D_yw30f")
+
 [node name="LabelState" type="Label" parent="." unique_id=1190063454]
 offset_left = 539.0
 offset_top = 312.0
@@ -50,5 +58,9 @@ offset_bottom = 335.0
 [node name="TimerAttack" type="Timer" parent="." unique_id=1110534255]
 wait_time = 0.4
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2079982056]
+
+[connection signal="body_entered" from="WeaponHolder/axe/Area3D" to="WeaponHolder" method="_on_area_3d_body_entered"]
 
 [editable path="HUD"]

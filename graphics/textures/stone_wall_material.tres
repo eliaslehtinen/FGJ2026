@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://brab6g3ytv7wf"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://2pwsj4xcj0oa"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_81c78"]
 load_path = "res://.godot/imported/stone_seamless_DIFF.png-0720d8b282ec1a9401beb468e1afdfd0.s3tc.ctex"

@@ -31,7 +31,7 @@ var starting_attack_rot_y: float
 var attacking_rot_y_max: float = 10.0 # 10.0 degrees
 var attack_y_offset: float # Current
 @onready var timer_attack: Timer = $TimerAttack
-
+@onready var weapon_area: Area3D = $WeaponHolder/axe/Area3D
 
 enum AttackState {
 	NONE,
@@ -42,6 +42,7 @@ enum AttackState {
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	weapon_area.monitoring = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -142,6 +143,7 @@ func attacking() -> void:
 			if attack_tween and attack_tween.is_running() or timer_attack.time_left > 0.0:
 				return
 
+			weapon_area.monitoring = true
 			attack_tween = create_tween().set_parallel(true)
 			## Final load
 			attack_tween.tween_property(camera_holder, "rotation:x", deg_to_rad(75), 0.3).from_current()
@@ -150,7 +152,7 @@ func attacking() -> void:
 			## Swing
 			attack_tween.chain().tween_property(camera_holder, "rotation:x", deg_to_rad(-30), 0.15).set_delay(0.05)
 			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(-80), 0.2)
-			attack_tween.tween_property(weapon_holder, "rotation:z", deg_to_rad(-10), 0.2)
+			attack_tween.tween_property(weapon_holder, "rotation:z", deg_to_rad(-5), 0.2)
 			await attack_tween.finished
 			print("Tween attack finish")
 			timer_attack.start()
@@ -218,3 +220,7 @@ func headbob(headbob_time: float) -> Vector3:
 	headbob_position.y = sin(headbob_time * headbob_frequency) * headbob_amplitude
 	headbob_position.x = sin(headbob_time * headbob_frequency / 2) * headbob_amplitude
 	return headbob_position
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.

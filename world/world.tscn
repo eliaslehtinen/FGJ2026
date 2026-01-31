@@ -133,10 +133,6 @@ uv_scale = 0.3
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_mmdvd")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_tcf2h")])
 
-[sub_resource type="BoxMesh" id="BoxMesh_g312j"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_tcf2h"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_fn3g3"]
 size = Vector3(7.1882324, 0.01, 6)
 
@@ -166,30 +162,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702957, 1.4977808, 0)
 speed = 5.0
 sprint_speed = 7.0
 sensitivity = 6.0
-
-[node name="Node3D" type="Node3D" parent="." unique_id=1339824152]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.729153, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=438000989]
-mesh = SubResource("BoxMesh_g312j")
-
-[node name="Node3D4" type="Node3D" parent="." unique_id=1477776220]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2843463, 2.7218885, 2.4643168)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D4" unique_id=1278260670]
-mesh = SubResource("SphereMesh_tcf2h")
-
-[node name="Node3D2" type="Node3D" parent="." unique_id=245912495]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.55146, 1.729153, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2" unique_id=1728076684]
-mesh = SubResource("BoxMesh_g312j")
-
-[node name="Node3D3" type="Node3D" parent="." unique_id=660883563]
-transform = Transform3D(2.39081, 0, 0, 0, 2.5913196, 0, 0, 0, 2.5913196, 3.9751654, 2.6064038, 4.0323377)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3" unique_id=1302498368]
-mesh = SubResource("BoxMesh_g312j")
 
 [node name="Execution" parent="." unique_id=1415614088 instance=ExtResource("5_mmdvd")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 8.207215, 2.8975663, -12.30202)

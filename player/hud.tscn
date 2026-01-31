@@ -19,7 +19,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="." unique_id=522104854]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1920, 1080)
+size = Vector2i(1500, 700)
 render_target_update_mode = 4
 
 [node name="2dHood" parent="SubViewport" unique_id=1823347437 instance=ExtResource("1_2mhk3")]
