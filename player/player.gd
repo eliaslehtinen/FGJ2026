@@ -20,7 +20,6 @@ const BLOOD_PARTICLE: PackedScene = preload("res://particles/blood_particle.tscn
 @export var headbob_amplitude := 0.05
 var headbob_time := 0.0
 
-
 const SENSITIVTY_DIVIDER: int = 100
 var gravity_multiplier: float = 1.2
 
@@ -31,6 +30,8 @@ var attack_tween: Tween
 var starting_attack_rot_y: float
 var attacking_rot_y_max: float = 10.0 # 10.0 degrees
 var attack_y_offset: float # Current
+@onready var timer_attack: Timer = $TimerAttack
+
 
 enum AttackState {
 	NONE,
@@ -109,11 +110,6 @@ func attacking() -> void:
 				return
 
 			print("Tween attacking start")
-			#camera_holder.rotation.x = 0.0
-			#weapon_holder.rotation.x = 0.0
-			#weapon_holder.position.x = 0.0
-			#weapon_holder.rotation.y = 0.0
-			#weapon_holder.rotation.z = 0.0
 			attack_tween = create_tween().set_parallel(true)
 			attack_tween.tween_property(camera_holder, "rotation:x", deg_to_rad(40), 1.0)
 			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(25), 1.0)
@@ -143,28 +139,48 @@ func attacking() -> void:
 			attack_tween.tween_property(weapon_holder, "position:x", -0.1, 1.0)
 			attack_tween.tween_property(weapon_holder, "position:x", 0.1, 0.5)
 		AttackState.ATTACKING:
-			## TODO:
+			if attack_tween and attack_tween.is_running() or timer_attack.time_left > 0.0:
+				return
+
+			attack_tween = create_tween().set_parallel(true)
+			## Final load
+			attack_tween.tween_property(camera_holder, "rotation:x", deg_to_rad(75), 0.3).from_current()
+			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(65), 0.4).from_current()
+
+			## Swing
+			attack_tween.chain().tween_property(camera_holder, "rotation:x", deg_to_rad(-30), 0.15).set_delay(0.05)
+			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(-80), 0.2)
+			attack_tween.tween_property(weapon_holder, "rotation:z", deg_to_rad(-10), 0.2)
+			await attack_tween.finished
+			print("Tween attack finish")
+			timer_attack.start()
+			await timer_attack.timeout
+
+			## Reset, tween these?
+			attack_tween = create_tween().set_parallel(true)
+			attack_tween.tween_property(camera_holder, "rotation:x", 0.0, 0.25)
+			attack_tween.tween_property(weapon_holder, "rotation:x", 0.0, 0.25)
+			attack_tween.tween_property(weapon_holder, "position:x", 0.0, 0.25)
+			attack_tween.tween_property(weapon_holder, "rotation:y", 0.0, 0.25)
+			attack_tween.tween_property(weapon_holder, "rotation:z", 0.0, 0.25)
+			await attack_tween.finished
 			attack_state = AttackState.NONE
-			return
-
-
-			camera_holder.rotation.x = 0.0
-			weapon_holder.rotation.x = 0.0
-			weapon_holder.position.x = 0.0
-			weapon_holder.rotation.y = 0.0
-			weapon_holder.rotation.z = 0.0
-			return
+			#camera_holder.rotation.x = 0.0
+			#weapon_holder.rotation.x = 0.0
+			#weapon_holder.position.x = 0.0
+			#weapon_holder.rotation.y = 0.0
+			#weapon_holder.rotation.z = 0.0
 
 
 func _physics_process(delta: float) -> void:
 	$LabelState.text = AttackState.keys()[attack_state]
-	print(weapon_holder.position.x)
+	#print(weapon_holder.position.x)
 	check_debug_controls()
 
 	if attack_state == AttackState.NONE:
 		if Input.is_action_just_pressed("attack"):
 			starting_attack_rot_y = rotation.y
-			print("Starting attack rot y", starting_attack_rot_y)
+			#print("Starting attack rot y", starting_attack_rot_y)
 			attack_state = AttackState.STARTING
 
 	if attack_state != AttackState.NONE:
@@ -192,11 +208,12 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
-	
+
 	headbob_time += delta * velocity.length() * float(is_on_floor())
 	$CameraHolder/Camera3D.transform.origin = headbob(headbob_time)
 
-func headbob(headbob_time: float):
+
+func headbob(headbob_time: float) -> Vector3:
 	var headbob_position = Vector3.ZERO
 	headbob_position.y = sin(headbob_time * headbob_frequency) * headbob_amplitude
 	headbob_position.x = sin(headbob_time * headbob_frequency / 2) * headbob_amplitude

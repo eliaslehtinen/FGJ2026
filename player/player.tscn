@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://be8bf0g5jut0b" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://cwarosabjdh0w" path="res://player/hud.tscn" id="2_rkbax"]
 [ext_resource type="PackedScene" uid="uid://b1jyxtw4rvs43" path="res://graphics/3d/axe.blend" id="3_g1dw6"]
-[ext_resource type="Script" path="res://player/weapon_holder.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://bqyxybxqbbcxd" path="res://player/weapon_holder.gd" id="3_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
 radius = 0.45
@@ -46,5 +46,9 @@ offset_left = 539.0
 offset_top = 312.0
 offset_right = 579.0
 offset_bottom = 335.0
+
+[node name="TimerAttack" type="Timer" parent="." unique_id=1110534255]
+wait_time = 0.4
+one_shot = true
 
 [editable path="HUD"]
