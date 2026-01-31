@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cnieisctv7u27"]
 
 [ext_resource type="PackedScene" uid="uid://4034ydast57p" path="res://graphics/3d/castle_door.blend" id="1_thj5x"]
-[ext_resource type="Material" uid="uid://brab6g3ytv7wf" path="res://graphics/textures/stone_wall_material.tres" id="2_rqjs1"]
+[ext_resource type="Material" uid="uid://2pwsj4xcj0oa" path="res://graphics/textures/stone_wall_material.tres" id="2_rqjs1"]
 
-[node name="castle_door_with_material" unique_id=1600741990 instance=ExtResource("1_thj5x")]
+[node name="castle_door" unique_id=2044023833 instance=ExtResource("1_thj5x")]
 
-[node name="castle_gate" parent="." index="0" unique_id=1077854631]
+[node name="castle_gate" parent="." index="0" unique_id=503541046]
 surface_material_override/0 = ExtResource("2_rqjs1")

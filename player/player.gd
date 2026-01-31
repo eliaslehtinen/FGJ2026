@@ -128,6 +128,10 @@ func attacking() -> void:
 				attack_state = AttackState.ATTACKING
 				attack_tween.kill()
 				return
+			if Input.is_action_just_pressed("right_click"):
+				attack_state = AttackState.NONE
+				attack_tween.kill()
+				reset_weapon_transforms()
 
 			if attack_tween and attack_tween.is_running():
 				return
@@ -158,7 +162,6 @@ func attacking() -> void:
 			else: # Middle
 				attack_tween.tween_property(weapon_holder, "position:x", 0.15, 0.3)
 
-
 			## Final load
 			attack_tween.tween_property(camera_holder, "rotation:x", deg_to_rad(75), 0.3).from_current()
 			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(65), 0.4).from_current()
@@ -174,12 +177,7 @@ func attacking() -> void:
 			await timer_attack.timeout
 
 			## Reset, tween these?
-			attack_tween = create_tween().set_parallel(true)
-			attack_tween.tween_property(camera_holder, "rotation:x", 0.0, 0.25)
-			attack_tween.tween_property(weapon_holder, "rotation:x", 0.0, 0.25)
-			attack_tween.tween_property(weapon_holder, "position:x", 0.0, 0.25)
-			attack_tween.tween_property(weapon_holder, "rotation:y", 0.0, 0.25)
-			attack_tween.tween_property(weapon_holder, "rotation:z", 0.0, 0.25)
+			reset_weapon_transforms()
 			await attack_tween.finished
 			attack_state = AttackState.NONE
 			#camera_holder.rotation.x = 0.0
@@ -187,6 +185,15 @@ func attacking() -> void:
 			#weapon_holder.position.x = 0.0
 			#weapon_holder.rotation.y = 0.0
 			#weapon_holder.rotation.z = 0.0
+
+
+func reset_weapon_transforms() -> void:
+	attack_tween = create_tween().set_parallel(true)
+	attack_tween.tween_property(camera_holder, "rotation:x", 0.0, 0.25)
+	attack_tween.tween_property(weapon_holder, "rotation:x", 0.0, 0.25)
+	attack_tween.tween_property(weapon_holder, "position:x", 0.0, 0.25)
+	attack_tween.tween_property(weapon_holder, "rotation:y", 0.0, 0.25)
+	attack_tween.tween_property(weapon_holder, "rotation:z", 0.0, 0.25)
 
 
 func _physics_process(delta: float) -> void:

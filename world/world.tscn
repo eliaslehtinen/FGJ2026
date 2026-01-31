@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://2pubwjgqab6s" path="res://world/castle_tower_with_material.tscn" id="11_ocfjn"]
 [ext_resource type="PackedScene" uid="uid://duoulfqt8q68d" path="res://world/castle_wall_with_material.tscn" id="12_dqqhb"]
 [ext_resource type="PackedScene" uid="uid://juam5berkyu1" path="res://world/castle_tower_with_material_large.tscn" id="13_ocfjn"]
+[ext_resource type="PackedScene" uid="uid://u8cq57cya00a" path="res://graphics/3d/cabin.blend" id="14_dqqhb"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h5o24"]
 
@@ -181,7 +182,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.092253, 0.73122495, 9.17274
 [node name="barrel" parent="." unique_id=1474903304 instance=ExtResource("9_mad0u")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.0582244, 1.7629688, -6.2791395)
 
-[node name="castle_door_with_material" parent="." unique_id=1600741990 instance=ExtResource("10_mad0u")]
+[node name="castle_door" parent="." unique_id=2044023833 instance=ExtResource("10_mad0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.928472, 1.077335, -81.01864)
 
 [node name="castle_tower_with_material" parent="." unique_id=650376445 instance=ExtResource("11_ocfjn")]
@@ -225,3 +226,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.01508, 9.580503, -0.089702
 
 [node name="castle_wall_with_material8" parent="castle_wall_with_material8" unique_id=290833869 instance=ExtResource("12_dqqhb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04661846, 9.580503, -0.028064728)
+
+[node name="cabin" parent="." unique_id=1631016941 instance=ExtResource("14_dqqhb")]
+transform = Transform3D(-0.17636307, 0, 1.9922088, 0, 2, 0, -1.9922088, 0, -0.17636307, 27.34597, 0, -41.10459)
