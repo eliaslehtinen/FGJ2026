@@ -5,7 +5,10 @@ const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tsc
 
 @onready var hud: SubViewportContainer = $HUD
 @onready var camera_holder: Node3D = $CameraHolder
+@onready var camera: Camera3D = $CameraHolder/Camera3D
+@onready var ray_cast: RayCast3D = $CameraHolder/RayCast3D
 @onready var weapon_holder: WeaponHolder = $WeaponHolder
+@onready var drag_point: Node3D = $DragPoint
 
 @onready var audio_walk: AudioStreamPlayer = $AudioWalk
 
@@ -41,6 +44,8 @@ enum AttackState {
 	HOVERING,
 	ATTACKING
 }
+
+var dragged_man: Man
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -212,6 +217,24 @@ func _physics_process(delta: float) -> void:
 	if attack_state != AttackState.NONE and is_on_floor():
 		attacking()
 		return
+
+	if Input.is_action_just_pressed("drag"):
+		if ray_cast.is_colliding():
+			if dragged_man:
+				dragged_man = null
+				return
+
+			print("Colliding with man")
+			var collider: Object = ray_cast.get_collider()
+			var _owner = collider.owner
+			if _owner is Man and not dragged_man:
+				print("Assigned dragged man", _owner)
+				dragged_man = _owner
+
+	if dragged_man:
+		dragged_man.first_bone
+		dragged_man.global_position = dragged_man.global_position.lerp( \
+			drag_point.global_position, delta * 5.0)
 
 	if not is_on_floor():
 		velocity += get_gravity() * gravity_multiplier * delta
