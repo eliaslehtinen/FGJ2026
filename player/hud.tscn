@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://cwarosabjdh0w"]
 
+[ext_resource type="Shader" uid="uid://bh330x7lcj7dx" path="res://player/hud.gdshader" id="1_2e3ur"]
 [ext_resource type="PackedScene" uid="uid://c5f8x4p2lur4u" path="res://player/2d_hood.tscn" id="1_2mhk3"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lbh3"]
+shader = ExtResource("1_2e3ur")
+shader_parameter/curvature = 4.0
+
 [node name="HUD" type="SubViewportContainer" unique_id=977719269]
+material = SubResource("ShaderMaterial_6lbh3")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
