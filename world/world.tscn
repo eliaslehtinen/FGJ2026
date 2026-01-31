@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://s5c4vpug6dn" path="res://skeletor/skeletor.tscn" id="15_b2suy"]
 [ext_resource type="PackedScene" uid="uid://d0cufsfm1oith" path="res://graphics/3d/flagpole.blend" id="16_h8lre"]
 [ext_resource type="PackedScene" uid="uid://bpj8d2h8ds273" path="res://graphics/3d/market_stand.blend" id="17_ysn08"]
+[ext_resource type="PackedScene" uid="uid://ca64lw1ilej8m" path="res://graphics/3d/character.blend" id="22_o1net"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h5o24"]
 
@@ -280,14 +281,19 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.1146145, 2.6148899, -20.10
 [node name="flagpole3" parent="." unique_id=2037246226 instance=ExtResource("16_h8lre")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.1146145, 2.6148899, -8.705803)
 
-[node name="market_stand" parent="." unique_id=397339856 instance=ExtResource("17_ysn08")]
+[node name="market_stand" parent="." unique_id=820778545 instance=ExtResource("17_ysn08")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -56.278778)
 
-[node name="market_stand2" parent="." unique_id=243401685 instance=ExtResource("17_ysn08")]
+[node name="market_stand2" parent="." unique_id=1808342286 instance=ExtResource("17_ysn08")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -49.386116)
 
-[node name="market_stand3" parent="." unique_id=1030235342 instance=ExtResource("17_ysn08")]
+[node name="market_stand3" parent="." unique_id=474739654 instance=ExtResource("17_ysn08")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -42.638935)
 
-[node name="market_stand4" parent="." unique_id=102270914 instance=ExtResource("17_ysn08")]
+[node name="market_stand4" parent="." unique_id=1084200816 instance=ExtResource("17_ysn08")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -36.929012)
+
+[node name="character2" parent="." unique_id=2144983009 instance=ExtResource("22_o1net")]
+transform = Transform3D(0.10424765, 0, 0.28130487, 0, 0.29999998, 0, -0.28130487, 0, 0.10424765, 11.755743, 0.8760307, -36.225636)
+
+[editable path="market_stand2"]
