@@ -197,3 +197,6 @@ shape = SubResource("BoxShape3D_fn3g3")
 
 [node name="cabbage_wagon" parent="." unique_id=1296738749 instance=ExtResource("7_sc4t8")]
 transform = Transform3D(0.42192212, 0, -0.90663207, 0, 1, 0, 0.90663207, 0, 0.42192212, 4.5256352, 0.7560179, 13)
+
+[node name="cabbage_wagon2" parent="." unique_id=1510547189 instance=ExtResource("7_sc4t8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.092253, 0.73122495, 9.172749)

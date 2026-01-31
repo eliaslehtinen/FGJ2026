@@ -18,12 +18,44 @@ const BLOOD_PARTICLE: PackedScene = preload("res://particles/blood_particle.tscn
 const SENSITIVTY_DIVIDER: int = 100
 var gravity_multiplier: float = 1.2
 
+## Attacking state
+var attack_state: AttackState = AttackState.NONE
+var attack_tween: Tween
+
+var starting_attack_rot_y: float
+var attacking_rot_y_max: float = 10.0 # 10.0 degrees
+var attack_y_offset: float # Current
+
+enum AttackState {
+	NONE,
+	STARTING,
+	HOVERING,
+	ATTACKING
+}
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
+		if attack_state != AttackState.NONE:
+			# TODO: remove return if we want to control with mouse during hovering
+			return
+
+			attack_y_offset -= deg_to_rad(
+				event.screen_relative.x * sensitivity / SENSITIVTY_DIVIDER
+			)
+
+			attack_y_offset = clampf(
+				attack_y_offset,
+				-attacking_rot_y_max / 2,
+				attacking_rot_y_max / 2
+			)
+
+			rotation.y = starting_attack_rot_y + attack_y_offset
+			return
+
 		# Rotate the player character by y-axis (left and right)
 		rotate_y(deg_to_rad(-event.screen_relative.x * sensitivity / SENSITIVTY_DIVIDER))
 		# Rotates the camera holder around the x-axis (up and down)
@@ -31,8 +63,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Clamp the rotation of the camera on the x-axis to prevent turning "over" the axis
 		camera_holder.rotation.x = clampf(camera_holder.rotation.x, deg_to_rad(-87), deg_to_rad(87))
 
-		## Move the weapon holder and rotate accordingly
 		#weapon_holder.rotation.x = camera_holder.rotation.x
+		## Move the weapon holder and rotate accordingly
 		var look_down_weapon_holder_max_angle: float = 40
 		weapon_holder.rotation.x = \
 			clampf(camera_holder.rotation.x, deg_to_rad(-look_down_weapon_holder_max_angle), deg_to_rad(25))
@@ -40,12 +72,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Move the weapon holder closer if looking down
 		if weapon_holder.rotation.x < 0:
 			var rad: float = -rad_to_deg(weapon_holder.rotation.x)
-			print(rad)
+			#print(rad)
 			weapon_holder.position.z = clampf(rad / look_down_weapon_holder_max_angle * z_offset, 0.0, z_offset)
 		else:
 			weapon_holder.position.z = 0.0
 
-		print(weapon_holder.position.z)
+		#print(weapon_holder.position.z)
 
 
 func check_debug_controls() -> void:
@@ -60,8 +92,78 @@ func check_debug_controls() -> void:
 		hud.visible = not hud.visible
 
 
+func attacking() -> void:
+	## Starting attack
+	match attack_state:
+		AttackState.STARTING:
+			## Wait till the camera is looking forward TODO
+			## Raise camera and axe
+			## Finer control of axe!!!
+			if attack_tween and attack_tween.is_running():
+				return
+
+			print("Tween attacking start")
+			#camera_holder.rotation.x = 0.0
+			#weapon_holder.rotation.x = 0.0
+			#weapon_holder.position.x = 0.0
+			#weapon_holder.rotation.y = 0.0
+			#weapon_holder.rotation.z = 0.0
+			attack_tween = create_tween().set_parallel(true)
+			attack_tween.tween_property(camera_holder, "rotation:x", deg_to_rad(40), 1.0)
+			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(25), 1.0)
+			attack_tween.tween_property(weapon_holder, "position:x", 0.1, 1.5)
+			attack_tween.tween_property(weapon_holder, "rotation:y", deg_to_rad(-25), 1.5)
+			attack_tween.tween_property(weapon_holder, "rotation:z", deg_to_rad(-25), 1.5)
+			await attack_tween.finished
+			print("Tween attacking finish")
+			attack_state = AttackState.HOVERING
+
+		AttackState.HOVERING:
+			## Lock in hovering position when pressed click
+			## TODO: keep mouse pressed and lock when release
+			if Input.is_action_just_pressed("attack"):
+				attack_state = AttackState.ATTACKING
+				attack_tween.kill()
+				return
+
+			if attack_tween and attack_tween.is_running():
+				return
+
+			print("Tween hovering start")
+			## Loop swing from left to right and right to left
+			attack_tween = create_tween().set_ease(Tween.EASE_IN_OUT) \
+				.set_trans(Tween.TRANS_CUBIC).set_loops()
+			attack_tween.tween_property(weapon_holder, "position:x", 0.3, 0.5).from_current()
+			attack_tween.tween_property(weapon_holder, "position:x", -0.1, 1.0)
+			attack_tween.tween_property(weapon_holder, "position:x", 0.1, 0.5)
+		AttackState.ATTACKING:
+			## TODO:
+			attack_state = AttackState.HOVERING
+			return
+
+
+			camera_holder.rotation.x = 0.0
+			weapon_holder.rotation.x = 0.0
+			weapon_holder.position.x = 0.0
+			weapon_holder.rotation.y = 0.0
+			weapon_holder.rotation.z = 0.0
+			return
+
+
 func _physics_process(delta: float) -> void:
+	$LabelState.text = AttackState.keys()[attack_state]
+	print(weapon_holder.position.x)
 	check_debug_controls()
+
+	if attack_state == AttackState.NONE:
+		if Input.is_action_just_pressed("attack"):
+			starting_attack_rot_y = rotation.y
+			print("Starting attack rot y", starting_attack_rot_y)
+			attack_state = AttackState.STARTING
+
+	if attack_state != AttackState.NONE:
+		attacking()
+		return
 
 	if not is_on_floor():
 		velocity += get_gravity() * gravity_multiplier * delta

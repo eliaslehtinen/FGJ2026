@@ -18,7 +18,7 @@ script = ExtResource("1_oul6g")
 material = null
 
 [node name="SubViewport" parent="HUD" index="0" unique_id=522104854]
-size = Vector2i(1920, 700)
+size = Vector2i(1500, 700)
 
 [node name="2dHood" parent="HUD/SubViewport" index="0" unique_id=1823347437]
 script = null
@@ -38,6 +38,12 @@ mesh = SubResource("CapsuleMesh_oul6g")
 script = ExtResource("3_yw30f")
 
 [node name="axe" parent="WeaponHolder" unique_id=699436866 instance=ExtResource("3_g1dw6")]
-transform = Transform3D(-0.071069926, 0.18453091, 0.029956514, 0.045267344, 0.048081007, -0.18878314, -0.1813834, -0.060303807, -0.058851745, -0.52943575, 0, -0.8963047)
+transform = Transform3D(-0.08455249, 0.17945506, 0.025430823, 0.04526732, 0.048081003, -0.18878308, -0.17550427, -0.074054524, -0.06094415, -0.4957018, 0, -0.8963047)
+
+[node name="LabelState" type="Label" parent="." unique_id=1190063454]
+offset_left = 539.0
+offset_top = 312.0
+offset_right = 579.0
+offset_bottom = 335.0
 
 [editable path="HUD"]
