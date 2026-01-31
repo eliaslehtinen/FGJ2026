@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://be8bf0g5jut0b" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://cwarosabjdh0w" path="res://player/hud.tscn" id="2_rkbax"]
+[ext_resource type="PackedScene" uid="uid://b1jyxtw4rvs43" path="res://graphics/3d/axe.blend" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://bqyxybxqbbcxd" path="res://player/weapon_holder.gd" id="3_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
+radius = 0.45
+height = 1.8
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
 
@@ -11,27 +15,21 @@
 script = ExtResource("1_oul6g")
 
 [node name="HUD" parent="." unique_id=977719269 instance=ExtResource("2_rkbax")]
+material = null
 
 [node name="CameraHolder" type="Node3D" parent="." unique_id=1902146556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65476334, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder" unique_id=153837092]
 
-[node name="LabelFPS" type="Label" parent="." unique_id=478737786]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -31.0
-offset_right = 44.0
-offset_bottom = -8.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "FPS: "
-horizontal_alignment = 1
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=764173173]
 shape = SubResource("CapsuleShape3D_oul6g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=559776829]
 mesh = SubResource("CapsuleMesh_oul6g")
+
+[node name="WeaponHolder" type="Node3D" parent="." unique_id=521219202]
+script = ExtResource("3_yw30f")
+
+[node name="axe" parent="WeaponHolder" unique_id=699436866 instance=ExtResource("3_g1dw6")]
+transform = Transform3D(-0.0037440206, 0.19296405, 0.05244853, 0.044549745, 0.051944226, -0.1879285, -0.19493921, 0.008164769, -0.043954927, -0.08253831, 0, -0.7695122)

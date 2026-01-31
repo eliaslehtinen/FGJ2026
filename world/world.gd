@@ -14,7 +14,7 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if used_at_start_menu:
 		process_mode = Node.PROCESS_MODE_DISABLED
 		world_ui.process_mode = Node.PROCESS_MODE_DISABLED

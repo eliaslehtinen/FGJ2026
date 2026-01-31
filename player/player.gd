@@ -4,6 +4,8 @@ class_name Player
 const BLOOD_PARTICLE: PackedScene = preload("res://particles/blood_particle.tscn")
 
 @onready var hud: SubViewportContainer = $HUD
+@onready var camera_holder: Node3D = $CameraHolder
+@onready var weapon_holder: WeaponHolder = $WeaponHolder
 
 @export_group("Movement stats")
 @export var speed: float = 6.5
@@ -15,9 +17,6 @@ const BLOOD_PARTICLE: PackedScene = preload("res://particles/blood_particle.tscn
 
 const SENSITIVTY_DIVIDER: int = 100
 var gravity_multiplier: float = 1.2
-
-@onready var camera_holder: Node3D = $CameraHolder
-@onready var label_fps: Label = $LabelFPS
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -31,6 +30,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_holder.rotate_x(deg_to_rad(-event.screen_relative.y * sensitivity / SENSITIVTY_DIVIDER))
 		# Clamp the rotation of the camera on the x-axis to prevent turning "over" the axis
 		camera_holder.rotation.x = clampf(camera_holder.rotation.x, deg_to_rad(-87), deg_to_rad(87))
+
+		weapon_holder.rotation.x = camera_holder.rotation.x
 
 
 func check_debug_controls() -> void:
@@ -65,7 +66,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-
-	label_fps.text = "FPS: " + str(Engine.get_frames_per_second())
 
 	move_and_slide()

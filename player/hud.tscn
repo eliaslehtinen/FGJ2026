@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwarosabjdh0w"]
 
-[ext_resource type="Shader" uid="uid://bh330x7lcj7dx" path="res://player/hud.gdshader" id="1_2e3ur"]
+[ext_resource type="Shader" path="res://player/hud.gdshader" id="1_2e3ur"]
 [ext_resource type="PackedScene" uid="uid://c5f8x4p2lur4u" path="res://player/2d_hood.tscn" id="1_2mhk3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6lbh3"]

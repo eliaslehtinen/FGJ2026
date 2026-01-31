@@ -6,6 +6,7 @@
 
 [node name="StartMenu" type="Node3D" unique_id=2026161783]
 script = ExtResource("1_loyqk")
+skip_start_menu = true
 
 [node name="World" parent="." unique_id=1578379085 instance=ExtResource("3_o125m")]
 
