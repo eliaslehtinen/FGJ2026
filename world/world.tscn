@@ -179,5 +179,5 @@ transform = Transform3D(2.39081, 0, 0, 0, 2.5913196, 0, 0, 0, 2.5913196, 3.97516
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3" unique_id=1302498368]
 mesh = SubResource("BoxMesh_g312j")
 
-[node name="Execution" parent="." unique_id=660222358 instance=ExtResource("5_mmdvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.708015, 5.931369, -64.31114)
+[node name="Execution" parent="." unique_id=1418798091 instance=ExtResource("5_mmdvd")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 5.816533, 2.8360386, -12.30202)
