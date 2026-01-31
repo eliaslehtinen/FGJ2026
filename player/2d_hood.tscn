@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c5f8x4p2lur4u"]
+
+[ext_resource type="Script" uid="uid://b7lc1e1iq2gja" path="res://player/2d_hood.gd" id="1_iglmf"]
+[ext_resource type="Texture2D" uid="uid://dxaam81rvivmt" path="res://graphics/textures/2d-mask/2d-mask-with-texture-1.1.png" id="2_iglmf"]
+
+[node name="2dHood" type="Node2D" unique_id=1823347437]
+script = ExtResource("1_iglmf")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=451586991]
+
+[node name="2dMaskWithTexture1_0" type="Sprite2D" parent="." unique_id=1306218662]
+texture = ExtResource("2_iglmf")

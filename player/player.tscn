@@ -1,29 +1,43 @@
 [gd_scene format=3 uid="uid://d0thv83qywg80"]
 
 [ext_resource type="Script" uid="uid://be8bf0g5jut0b" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="PackedScene" uid="uid://cwarosabjdh0w" path="res://player/hud.tscn" id="2_rkbax"]
+[ext_resource type="PackedScene" uid="uid://b1jyxtw4rvs43" path="res://graphics/3d/axe.blend" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://bqyxybxqbbcxd" path="res://player/weapon_holder.gd" id="3_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
+radius = 0.45
+height = 1.8
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
 
 [node name="Player" type="CharacterBody3D" unique_id=652687026]
 script = ExtResource("1_oul6g")
 
+[node name="HUD" parent="." unique_id=977719269 instance=ExtResource("2_rkbax")]
+material = null
+
+[node name="SubViewport" parent="HUD" index="0" unique_id=522104854]
+size = Vector2i(1920, 700)
+
+[node name="2dHood" parent="HUD/SubViewport" index="0" unique_id=1823347437]
+script = null
+
 [node name="CameraHolder" type="Node3D" parent="." unique_id=1902146556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65476334, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder" unique_id=153837092]
-
-[node name="LabelFPS" type="Label" parent="." unique_id=478737786]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -54.0
-offset_right = 94.0
-grow_vertical = 0
-text = "FPS: "
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=764173173]
 shape = SubResource("CapsuleShape3D_oul6g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=559776829]
 mesh = SubResource("CapsuleMesh_oul6g")
+
+[node name="WeaponHolder" type="Node3D" parent="." unique_id=521219202]
+script = ExtResource("3_yw30f")
+
+[node name="axe" parent="WeaponHolder" unique_id=699436866 instance=ExtResource("3_g1dw6")]
+transform = Transform3D(-0.071069926, 0.18453091, 0.029956514, 0.045267344, 0.048081007, -0.18878314, -0.1813834, -0.060303807, -0.058851745, -0.52943575, 0, -0.8963047)
+
+[editable path="HUD"]

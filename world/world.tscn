@@ -1,9 +1,62 @@
-[gd_scene format=3 uid="uid://dc844wcasmwtp"]
+[gd_scene format=3 uid="uid://b05eft2p21cfm"]
 
 [ext_resource type="PackedScene" uid="uid://d0thv83qywg80" path="res://player/player.tscn" id="1_6xmxd"]
 [ext_resource type="Script" uid="uid://cuypqiviyjwoo" path="res://world/world.gd" id="1_tcf2h"]
+[ext_resource type="PackedScene" uid="uid://dm2iihrb58r76" path="res://world/world_ui.tscn" id="2_ai45w"]
+[ext_resource type="Shader" uid="uid://d2bmjh6ikr163" path="res://shaders/sky.gdshader" id="2_fn3g3"]
+[ext_resource type="Texture2D" uid="uid://bf2u23ry1wjaw" path="res://graphics/textures/dirt_ground_DIFF.png" id="2_h5o24"]
+[ext_resource type="Texture2D" uid="uid://g6tkodopfn21" path="res://graphics/textures/dirt_ground_NORMAL.png" id="3_mmdvd"]
+[ext_resource type="PackedScene" uid="uid://dlkeslx618x5g" path="res://graphics/3d/Execution.blend" id="5_mmdvd"]
+[ext_resource type="PackedScene" uid="uid://bvtyty06lexgg" path="res://graphics/3d/cabbage_wagon.blend" id="7_sc4t8"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_g312j"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h5o24"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h5o24"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_h5o24")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_mmdvd"]
+offsets = PackedFloat32Array(0.19499986, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mmdvd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mmdvd"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_mmdvd")
+color_ramp = SubResource("Gradient_mmdvd")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmdvd"]
+shader = ExtResource("2_fn3g3")
+shader_parameter/sky_top_color = Color(0.25397104, 0.4701029, 0.67467964, 1)
+shader_parameter/sky_horizon_color = Color(0.6226632, 0.7300058, 0.82236785, 1)
+shader_parameter/inv_sky_curve = 3.03143416908606
+shader_parameter/ground_bottom_color = Color(0.3856025, 0.5887152, 0.66706324, 1)
+shader_parameter/ground_horizon_color = Color(0.79727834, 0.8026069, 0.8132582, 1)
+shader_parameter/inv_ground_curve = 30.000000670552268
+shader_parameter/sun_angle_max = 0.8660254
+shader_parameter/inv_sun_curve = 22.782017
+shader_parameter/exposure = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/cloud_texture1 = SubResource("NoiseTexture2D_h5o24")
+shader_parameter/cloud_texture2 = SubResource("NoiseTexture2D_mmdvd")
+shader_parameter/cloud_direction1 = Vector2(-1, 1)
+shader_parameter/cloud_direction2 = Vector2(1, -1)
+shader_parameter/cloud_scale = Vector2(0.07, 0.06)
+shader_parameter/cloud_distance = 0.035
+shader_parameter/cloud_speed1 = 0.001
+shader_parameter/cloud_speed2 = 0.003
+
+[sub_resource type="Sky" id="Sky_4717r"]
+sky_material = SubResource("ShaderMaterial_mmdvd")
+
+[sub_resource type="Environment" id="Environment_tcf2h"]
+background_mode = 2
+background_energy_multiplier = 1.25
+sky = SubResource("Sky_4717r")
 
 [sub_resource type="Gradient" id="Gradient_g312j"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -45,7 +98,7 @@ _shader_parameters = {
 &"noise_texture": SubResource("NoiseTexture2D_tcf2h"),
 &"projection_threshold": 0.8
 }
-show_checkered = true
+world_background = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5o24"]
 transparency = 4
@@ -65,11 +118,49 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_tcf2h"]
+name = "dirt_ground_DIFF"
+albedo_texture = ExtResource("2_h5o24")
+normal_texture = ExtResource("3_mmdvd")
+uv_scale = 0.2
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_fn3g3"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_mmdvd")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_tcf2h")])
+
+[sub_resource type="BoxMesh" id="BoxMesh_g312j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_tcf2h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fn3g3"]
+size = Vector3(7.1882324, 0.01, 6)
 
 [node name="World" type="Node3D" unique_id=1578379085]
 script = ExtResource("1_tcf2h")
+
+[node name="WorldUI" parent="." unique_id=1036882639 instance=ExtResource("2_ai45w")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1992858761]
+environment = SubResource("Environment_tcf2h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=174881653]
+transform = Transform3D(0.7809104, -0.568469, -0.25888655, 1.40271625e-08, -0.41445503, 0.9100698, -0.62464327, -0.710683, -0.3236522, 0, 10.613327, 0)
+light_color = Color(0.85223806, 0.7068773, 0.48220432, 1)
+shadow_enabled = true
+
+[node name="Terrain3D" type="Terrain3D" parent="." unique_id=1138636014]
+data_directory = "res://terrain3d_data"
+material = SubResource("Terrain3DMaterial_4717r")
+assets = SubResource("Terrain3DAssets_fn3g3")
+collision_mode = 4
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." unique_id=652687026 instance=ExtResource("1_6xmxd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702957, 1.4977808, 0)
+speed = 5.0
+sprint_speed = 7.0
+sensitivity = 6.0
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1339824152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.729153, 0)
@@ -77,13 +168,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.729153, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=438000989]
 mesh = SubResource("BoxMesh_g312j")
 
-[node name="Terrain3D" type="Terrain3D" parent="." unique_id=1138636014]
-data_directory = "res://terrain3d_data"
-material = SubResource("Terrain3DMaterial_4717r")
-assets = SubResource("Terrain3DAssets_fn3g3")
-show_checkered = true
-top_level = true
-metadata/_edit_lock_ = true
+[node name="Node3D4" type="Node3D" parent="." unique_id=1477776220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2843463, 2.7218885, 2.4643168)
 
-[node name="Player" parent="." unique_id=652687026 instance=ExtResource("1_6xmxd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702957, 2.5573783, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D4" unique_id=1278260670]
+mesh = SubResource("SphereMesh_tcf2h")
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=245912495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.55146, 1.729153, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2" unique_id=1728076684]
+mesh = SubResource("BoxMesh_g312j")
+
+[node name="Node3D3" type="Node3D" parent="." unique_id=660883563]
+transform = Transform3D(2.39081, 0, 0, 0, 2.5913196, 0, 0, 0, 2.5913196, 3.9751654, 2.6064038, 4.0323377)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3" unique_id=1302498368]
+mesh = SubResource("BoxMesh_g312j")
+
+[node name="Execution" parent="." unique_id=1415614088 instance=ExtResource("5_mmdvd")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 8.207215, 2.8975663, -12.30202)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Execution" unique_id=219598673]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Execution/StaticBody3D" unique_id=1386336800]
+transform = Transform3D(-0.82404727, 0.5665212, 0, -0.5665214, -0.8240469, 0, 0, 0, 1, -3.9563236, -3.5118487, -5.2983)
+shape = SubResource("BoxShape3D_fn3g3")
+
+[node name="cabbage_wagon" parent="." unique_id=1296738749 instance=ExtResource("7_sc4t8")]
+transform = Transform3D(0.42192212, 0, -0.90663207, 0, 1, 0, 0.90663207, 0, 0.42192212, 4.5256352, 0.7560179, 13)
