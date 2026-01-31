@@ -31,7 +31,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Clamp the rotation of the camera on the x-axis to prevent turning "over" the axis
 		camera_holder.rotation.x = clampf(camera_holder.rotation.x, deg_to_rad(-87), deg_to_rad(87))
 
-		weapon_holder.rotation.x = camera_holder.rotation.x
+		## Move the weapon holder and rotate accordingly
+		#weapon_holder.rotation.x = camera_holder.rotation.x
+		var look_down_weapon_holder_max_angle: float = 40
+		weapon_holder.rotation.x = \
+			clampf(camera_holder.rotation.x, deg_to_rad(-look_down_weapon_holder_max_angle), deg_to_rad(25))
+		var z_offset: float = 0.35
+		# Move the weapon holder closer if looking down
+		if weapon_holder.rotation.x < 0:
+			var rad: float = -rad_to_deg(weapon_holder.rotation.x)
+			print(rad)
+			weapon_holder.position.z = clampf(rad / look_down_weapon_holder_max_angle * z_offset, 0.0, z_offset)
+		else:
+			weapon_holder.position.z = 0.0
+
+		print(weapon_holder.position.z)
 
 
 func check_debug_controls() -> void:
