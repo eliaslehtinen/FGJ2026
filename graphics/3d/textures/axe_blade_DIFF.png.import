@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bndysqb2p73yi"
-path.s3tc="res://.godot/imported/wood_DIFF.png-955f692869341a247c27b693e40f9e54.s3tc.ctex"
+uid="uid://dxdkysojo61w1"
+path.s3tc="res://.godot/imported/axe_blade_DIFF.png-7d617180a71183f8a30e775e2ea6dd6b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://graphics/textures/wood_DIFF.png"
-dest_files=["res://.godot/imported/wood_DIFF.png-955f692869341a247c27b693e40f9e54.s3tc.ctex"]
+source_file="res://graphics/3d/textures/axe_blade_DIFF.png"
+dest_files=["res://.godot/imported/axe_blade_DIFF.png-7d617180a71183f8a30e775e2ea6dd6b.s3tc.ctex"]
 
 [params]
 
