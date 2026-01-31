@@ -20,5 +20,5 @@ func _physics_process(delta: float) -> void:
 	var dist = current_rotation - prev_rotation
 	$Camera2D.offset -= dist * delta * offset_multiplier
 	prev_rotation = current_rotation
-	
+
 	$Camera2D.offset = lerp($Camera2D.offset, Vector2.ZERO, 1.0 - pow(0.03, delta))

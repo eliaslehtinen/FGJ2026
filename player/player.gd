@@ -49,11 +49,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func check_debug_controls() -> void:
+	# P
 	if Input.is_action_just_pressed("particle"):
 		var particle := BLOOD_PARTICLE.instantiate()
 		get_tree().root.add_child(particle)
 		print_debug("Blood particle instantiated")
 		particle.global_position = global_position - global_basis.z * 1.0
+	# M
 	if Input.is_action_just_pressed("mask"):
 		hud.visible = not hud.visible
 

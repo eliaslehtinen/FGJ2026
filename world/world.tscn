@@ -195,7 +195,5 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 8.207215, 2.8975663, -1
 transform = Transform3D(-0.82404727, 0.5665212, 0, -0.5665214, -0.8240469, 0, 0, 0, 1, -3.9563236, -3.5118487, -5.2983)
 shape = SubResource("BoxShape3D_fn3g3")
 
-[node name="cabbage_wagon" type="Node3D" parent="." unique_id=1296738749 instance=ExtResource("7_sc4t8")]
+[node name="cabbage_wagon" parent="." unique_id=1296738749 instance=ExtResource("7_sc4t8")]
 transform = Transform3D(0.42192212, 0, -0.90663207, 0, 1, 0, 0.90663207, 0, 0.42192212, 4.5256352, 0.7560179, 13)
-
-[editable path="WorldUI"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://be8bf0g5jut0b" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://cwarosabjdh0w" path="res://player/hud.tscn" id="2_rkbax"]
 [ext_resource type="PackedScene" uid="uid://b1jyxtw4rvs43" path="res://graphics/3d/axe.blend" id="3_g1dw6"]
-[ext_resource type="Script" path="res://player/weapon_holder.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://bqyxybxqbbcxd" path="res://player/weapon_holder.gd" id="3_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
 radius = 0.45
@@ -18,10 +18,10 @@ script = ExtResource("1_oul6g")
 material = null
 
 [node name="SubViewport" parent="HUD" index="0" unique_id=522104854]
-size = Vector2i(1500, 700)
+size = Vector2i(1920, 700)
 
 [node name="2dHood" parent="HUD/SubViewport" index="0" unique_id=1823347437]
-player = NodePath("../../..")
+script = null
 
 [node name="CameraHolder" type="Node3D" parent="." unique_id=1902146556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65476334, 0)
@@ -38,6 +38,6 @@ mesh = SubResource("CapsuleMesh_oul6g")
 script = ExtResource("3_yw30f")
 
 [node name="axe" parent="WeaponHolder" unique_id=699436866 instance=ExtResource("3_g1dw6")]
-transform = Transform3D(-0.0037440206, 0.19296405, 0.05244853, 0.044549745, 0.051944226, -0.1879285, -0.19493921, 0.008164769, -0.043954927, -0.08253831, 0, -0.7695122)
+transform = Transform3D(-0.071069926, 0.18453091, 0.029956514, 0.045267344, 0.048081007, -0.18878314, -0.1813834, -0.060303807, -0.058851745, -0.52943575, 0, -0.8963047)
 
 [editable path="HUD"]
