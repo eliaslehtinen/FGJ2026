@@ -7,9 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://idw5jdl15xgs" path="res://graphics/textures/rockground_seamless_DIFF.png" id="4_mad0u"]
 [ext_resource type="PackedScene" uid="uid://dlkeslx618x5g" path="res://graphics/3d/Execution.blend" id="5_mmdvd"]
 [ext_resource type="Texture2D" uid="uid://dyjndf0d40vmi" path="res://graphics/textures/rockground_seamless_NORMAL.png" id="5_ocfjn"]
+[ext_resource type="AudioStream" uid="uid://bg88iat1lvgbu" path="res://sounds/maa_askel_1.wav" id="7_j34ew"]
 [ext_resource type="PackedScene" uid="uid://bvtyty06lexgg" path="res://graphics/3d/cabbage_wagon.blend" id="7_sc4t8"]
+[ext_resource type="AudioStream" uid="uid://bd4djxy5o18do" path="res://sounds/maa_askel_2.wav" id="8_p2iis"]
+[ext_resource type="AudioStream" uid="uid://dw0mgm3cuiht6" path="res://sounds/maa_askel_3.wav" id="9_aysyn"]
 [ext_resource type="PackedScene" uid="uid://bnugpcq32l1bt" path="res://graphics/3d/barrel.blend" id="9_mad0u"]
 [ext_resource type="PackedScene" uid="uid://cnieisctv7u27" path="res://world/castle_door_with_material.tscn" id="10_mad0u"]
+[ext_resource type="AudioStream" uid="uid://s7mjfmwapiuf" path="res://sounds/maa_askel_4.wav" id="10_o1net"]
 [ext_resource type="PackedScene" uid="uid://2pubwjgqab6s" path="res://world/castle_tower_with_material.tscn" id="11_ocfjn"]
 [ext_resource type="PackedScene" uid="uid://duoulfqt8q68d" path="res://world/castle_wall_with_material.tscn" id="12_dqqhb"]
 [ext_resource type="PackedScene" uid="uid://juam5berkyu1" path="res://world/castle_tower_with_material_large.tscn" id="13_ocfjn"]
@@ -137,6 +141,13 @@ uv_scale = 0.3
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_mmdvd")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_tcf2h")])
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3ljsx"]
+streams_count = 4
+stream_0/stream = ExtResource("7_j34ew")
+stream_1/stream = ExtResource("8_p2iis")
+stream_2/stream = ExtResource("9_aysyn")
+stream_3/stream = ExtResource("10_o1net")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_fn3g3"]
 size = Vector3(7.1882324, 0.01, 6)
 
@@ -166,6 +177,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702957, 1.4977808, 0)
 speed = 5.0
 sprint_speed = 7.0
 sensitivity = 6.0
+
+[node name="AudioWalk" type="AudioStreamPlayer" parent="Player" unique_id=786267054]
+stream = SubResource("AudioStreamRandomizer_3ljsx")
+bus = &"Pelaaja"
 
 [node name="Execution" parent="." unique_id=1415614088 instance=ExtResource("5_mmdvd")]
 transform = Transform3D(0.022088706, 0, 0.49951184, 0, 0.5, 0, -0.49951184, 0, 0.022088706, 3.8007097, 2.8975663, -15.404228)
