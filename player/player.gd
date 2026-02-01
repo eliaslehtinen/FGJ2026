@@ -137,6 +137,8 @@ func attacking() -> void:
 			if Input.is_action_just_pressed("attack"):
 				attack_state = AttackState.ATTACKING
 				attack_tween.kill()
+				await get_tree().create_timer(0.2).timeout
+				$WeaponHolder/axe/AudioStreamPlayer3D.play()
 				return
 			if Input.is_action_just_pressed("right_click"):
 				attack_state = AttackState.NONE

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cc3awvx0vaycx"
-path="res://.godot/imported/circus_tent.blend-aaeb8ea1d5913031871254977ea5cc7b.scn"
+uid="uid://hgdhth2t2esu"
+path="res://.godot/imported/castle_house.blend-2ba726970cc321e07800b6c47ec8dd86.scn"
 
 [deps]
 
-source_file="res://graphics/3d/circus_tent/circus_tent.blend"
-dest_files=["res://.godot/imported/circus_tent.blend-aaeb8ea1d5913031871254977ea5cc7b.scn"]
+source_file="res://graphics/3d/castle_house.blend"
+dest_files=["res://.godot/imported/castle_house.blend-2ba726970cc321e07800b6c47ec8dd86.scn"]
 
 [params]
 
@@ -40,8 +40,8 @@ materials/extract_path=""
 _subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
-blender/nodes/punctual_lights=false
-blender/nodes/cameras=false
+blender/nodes/punctual_lights=true
+blender/nodes/cameras=true
 blender/nodes/custom_properties=true
 blender/nodes/modifiers=1
 blender/meshes/colors=false

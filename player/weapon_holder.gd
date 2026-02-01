@@ -19,5 +19,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			var particles := BLOOD_PARTICLES.instantiate()
 			get_tree().root.add_child(particles)
 			particles.global_position = body.global_position
+			$axe/AudioStreamPlayer3DHit.play()
 
 		print(body.name)

@@ -15,6 +15,7 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		return
 
+	$BackgroundMusicPlayer.play()
 	terrain_3d.set_camera(player.camera)
 
 
