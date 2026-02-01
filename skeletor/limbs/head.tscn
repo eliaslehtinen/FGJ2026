@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d4geq61e3utv5"]
+
+[ext_resource type="ArrayMesh" uid="uid://70es11l0llik" path="res://skeletor/limbs/head.tres" id="1_ibic7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ibic7"]
+radius = 0.12834427
+
+[node name="Head" type="RigidBody3D" unique_id=806055106]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=308745694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7312201, 0)
+mesh = ExtResource("1_ibic7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1216638871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0029777363, 0.09618035, 0.022122517)
+shape = SubResource("SphereShape3D_ibic7")

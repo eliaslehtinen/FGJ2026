@@ -8,6 +8,12 @@ const BLOOD_SOUND: PackedScene = preload("res://particles/blood_sound.tscn")
 
 var current_weapon: Node3D
 
+const HEAD = preload("res://skeletor/limbs/head.tscn")
+#const ARM_L = preload("res://skeletor/limbs/arm_l.tscn")
+#const ARM_R = preload("res://skeletor/limbs/arm_r.tscn")
+#const LEG_L = preload("res://skeletor/limbs/leg_l.tscn")
+#const LEG_R = preload("res://skeletor/limbs/leg_r.tscn")
+
 func _ready() -> void:
 	current_weapon = axe
 
@@ -36,6 +42,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			## Spawn head
 			owner.hit_head.emit()
 			print("head")
+			var head := HEAD.instantiate()
+			get_tree().root.add_child(head)
+			head.global_position = body.global_position
 			return
 
 		if _name.contains("shoulder_L") or _name.contains("arm_L"):

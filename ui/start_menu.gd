@@ -6,6 +6,7 @@ const WORLD: PackedScene = preload("res://world/world.tscn")
 @export var skip_start_menu: bool = false
 
 @onready var credits_screen: Control = $CreditsScreen
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,6 +14,8 @@ func _ready() -> void:
 	if skip_start_menu:
 		print_rich("[color=yellow]Skipping start menu[/color]")
 		start_game()
+
+	$AnimationPlayer.play("intro")
 
 
 func _input(event: InputEvent) -> void:
@@ -40,3 +43,7 @@ func start_game() -> void:
 
 func _physics_process(delta: float) -> void:
 	$Camera3D.rotate_y(delta * -0.5)
+
+
+func _on_audio_stream_player_finished() -> void:
+	audio_stream_player.play()

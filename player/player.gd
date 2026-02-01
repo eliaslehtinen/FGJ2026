@@ -12,7 +12,6 @@ signal hit_other
 @onready var hud: SubViewportContainer = $HUD
 @onready var camera_holder: Node3D = $CameraHolder
 @onready var camera: Camera3D = $CameraHolder/Camera3D
-@onready var ray_cast: RayCast3D = $CameraHolder/RayCast3D
 @onready var weapon_holder: WeaponHolder = $WeaponHolder
 @onready var drag_point: Node3D = $DragPoint
 
