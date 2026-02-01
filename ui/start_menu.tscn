@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://4fldhbdmidvu"]
 
 [ext_resource type="Script" uid="uid://hrdp12sofwvj" path="res://ui/start_menu.gd" id="1_loyqk"]
-[ext_resource type="PackedScene" uid="uid://5eeg44mlhf7w" path="res://ui/credits_screen.tscn" id="3_8wri1"]
+[ext_resource type="PackedScene" uid="uid://b1pcs8qwqgccr" path="res://ui/credits_screen.tscn" id="3_8wri1"]
 [ext_resource type="PackedScene" uid="uid://dc844wcasmwtp" path="res://world/world.tscn" id="3_o125m"]
 [ext_resource type="AudioStream" uid="uid://b1fcxhe2wr6wr" path="res://sounds/main_menu_theme.wav" id="4_lb6g3"]
 [ext_resource type="Texture2D" uid="uid://2j47vaj68oyg" path="res://graphics/textures/logo_axe.png" id="5_fl3bm"]
@@ -98,7 +98,6 @@ _data = {
 
 [node name="StartMenu" type="Node3D" unique_id=2026161783]
 script = ExtResource("1_loyqk")
-skip_start_menu = true
 
 [node name="World" parent="." unique_id=1578379085 instance=ExtResource("3_o125m")]
 
@@ -114,8 +113,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1421035731]
-
 [node name="StartMenuContainer" type="Control" parent="." unique_id=1010475022]
 material = SubResource("CanvasItemMaterial_lb6g3")
 layout_mode = 3
@@ -124,6 +121,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="LogoAxe" type="Sprite2D" parent="StartMenuContainer" unique_id=791160754]
 modulate = Color(1, 1, 1, 0.6156863)
@@ -174,9 +172,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Quit"
 
-[node name="CreditsScreen" parent="." unique_id=1066099905 instance=ExtResource("3_8wri1")]
-visible = false
-script = null
+[node name="CreditsScreen" parent="." unique_id=1971116540 instance=ExtResource("3_8wri1")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=124860]
 stream = ExtResource("4_lb6g3")

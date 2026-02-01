@@ -21,8 +21,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -74.0
+offset_top = 198.0
 offset_right = 74.0
-offset_bottom = 45.0
+offset_bottom = 243.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "Good job!"
@@ -62,5 +63,67 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
 text = "Quit"
+
+[node name="PanelContainerControls" type="PanelContainer" parent="." unique_id=891292073]
+layout_mode = 0
+offset_left = 1257.0
+offset_top = 228.0
+offset_right = 1771.0
+offset_bottom = 836.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainerControls" unique_id=2047211593]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="PanelContainerControls/VBoxContainer" unique_id=517041456]
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "Controls!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="PanelContainerControls/VBoxContainer" unique_id=698208562]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Movement: WASD, sprint, space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainerControls/VBoxContainer" unique_id=1792612382]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Swing axe: Left click"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainerControls/VBoxContainer" unique_id=1515625774]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Cancel swing: Right click"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="PanelContainerControls/VBoxContainer" unique_id=1558904781]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainerControls/VBoxContainer" unique_id=1464498818]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "If stuck: R to restart scene"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="PanelContainerControls/VBoxContainer" unique_id=988893548]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "If feeling adventurous: 
+one button can disable the mask"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

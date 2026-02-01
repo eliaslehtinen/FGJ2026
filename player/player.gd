@@ -6,7 +6,7 @@ const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tsc
 signal hovering
 signal attacked
 
-signal hit_head(man: Man)
+signal hit_head(man: Man, parts_hit: Array[String])
 signal hit_other
 
 @onready var hud: SubViewportContainer = $HUD

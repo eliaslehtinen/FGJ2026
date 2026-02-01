@@ -41,9 +41,5 @@ func start_game() -> void:
 	get_tree().call_deferred("change_scene_to_packed", WORLD)
 
 
-func _physics_process(delta: float) -> void:
-	$Camera3D.rotate_y(delta * -0.5)
-
-
 func _on_audio_stream_player_finished() -> void:
 	audio_stream_player.play()

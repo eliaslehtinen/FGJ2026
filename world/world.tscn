@@ -159,6 +159,12 @@ size = Vector3(6.0770264, 4.701538, 4.850395)
 [node name="World" type="Node3D" unique_id=1578379085]
 script = ExtResource("1_tcf2h")
 
+[node name="Player" parent="." unique_id=652687026 instance=ExtResource("1_6xmxd")]
+transform = Transform3D(0.9930705, 0, 0.11752004, 0, 1, 0, -0.11752004, 0, 0.9930705, 5.6747093, 1.339499, 0.82870245)
+speed = 5.0
+sprint_speed = 7.0
+sensitivity = 6.0
+
 [node name="WorldUI" parent="." unique_id=1036882639 instance=ExtResource("2_ai45w")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1992858761]
@@ -177,12 +183,6 @@ collision_mode = 4
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." unique_id=652687026 instance=ExtResource("1_6xmxd")]
-transform = Transform3D(0.08967658, 0, -0.99597096, 0, 1, 0, 0.99597096, 0, 0.08967658, 0.2970457, 4.048335, -20.41638)
-speed = 5.0
-sprint_speed = 7.0
-sensitivity = 6.0
-
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=252146769]
 stream = ExtResource("23_3ljsx")
 volume_db = -10.0
@@ -195,10 +195,27 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="WoodBlocks" type="Node3D" parent="." unique_id=307884771]
+
+[node name="wood_block2" parent="WoodBlocks" unique_id=1811353593 instance=ExtResource("24_k8wd0")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4.5708437, 2.4162216, -21.023714)
+
+[node name="wood_block3" parent="WoodBlocks" unique_id=66586440 instance=ExtResource("24_k8wd0")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 5.770462, 2.4162216, -23.492846)
+
+[node name="wood_block4" parent="WoodBlocks" unique_id=1153503096 instance=ExtResource("24_k8wd0")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 6.3097887, 2.4162216, -17.884762)
+
 [node name="Men" type="Node3D" parent="." unique_id=1211450348]
 
 [node name="man_glb" parent="Men" unique_id=1434652302 instance=ExtResource("8_2tavo")]
 transform = Transform3D(-1.1998147, 1.4305115e-07, -0.021088414, 0.02107607, 0.041061174, -1.1991122, 0.00072140695, -1.1992974, -0.041054837, 4.5180984, 2.826474, -19.270184)
+
+[node name="man_glb1" parent="Men" unique_id=1898441113 instance=ExtResource("8_2tavo")]
+transform = Transform3D(1.160161, -0.30647683, 0.009896772, 0.021076072, 0.04106117, -1.1991122, 0.30591145, 1.1594765, 0.045080747, 6.2352276, 2.8002365, -25.292322)
+
+[node name="man_glb2" parent="Men" unique_id=1880564569 instance=ExtResource("8_2tavo")]
+transform = Transform3D(-1.1998147, 1.4305115e-07, -0.021088414, 0.02107607, 0.041061174, -1.1991122, 0.00072140695, -1.1992974, -0.041054837, 6.2352276, 2.8002365, -16.093437)
 
 [node name="Characters" type="Node3D" parent="." unique_id=1306213942]
 
@@ -372,9 +389,6 @@ transform = Transform3D(-3.496911e-07, 0, 8, 0, 8, 0, -8, 0, -3.496911e-07, 26.1
 
 [node name="brick_house" parent="Props/wood_house" index="0" unique_id=1175385299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06121242, 0)
-
-[node name="wood_block2" parent="Props" unique_id=1811353593 instance=ExtResource("24_k8wd0")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4.5708437, 2.4162216, -21.023714)
 
 [node name="circus_tent" parent="Props" unique_id=344352713 instance=ExtResource("22_0pnie")]
 transform = Transform3D(1.7539217, 0, 1.7815044, 0, 2.5, 0, -1.7815044, 0, 1.7539217, 0.47397232, -0.2526617, 15.481886)

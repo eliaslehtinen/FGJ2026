@@ -14,6 +14,8 @@ const ARM_R = preload("res://skeletor/limbs/arm_r.tscn")
 const LEG_L = preload("res://skeletor/limbs/leg_l.tscn")
 const LEG_R = preload("res://skeletor/limbs/leg_r.tscn")
 
+var parts_hit: Array[String]
+
 func _ready() -> void:
 	current_weapon = axe
 
@@ -39,7 +41,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		if _name.contains("head"):
 			man.head.hide()
 			body.get_child(0).set_deferred("disabled", true)
-			owner.hit_head.emit(man)
+			owner.hit_head.emit(man, parts_hit)
 			print("head")
 			var head := HEAD.instantiate()
 			get_tree().root.add_child(head)
@@ -47,6 +49,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			return
 
 		if _name.contains("shoulder_L") or _name.contains("arm_L"):
+			parts_hit.append("arm_L")
 			man.arm_l.hide()
 			body.get_child(0).set_deferred("disabled", true)
 			var arm_l := ARM_L.instantiate()
@@ -54,6 +57,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			arm_l.global_position = body.global_position
 			print("left arm")
 		if _name.contains("shoulder_R") or _name.contains("arm_R"):
+			parts_hit.append("arm_R")
 			man.arm_r.hide()
 			body.get_child(0).set_deferred("disabled", true)
 			var arm_r := ARM_R.instantiate()
@@ -61,6 +65,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			arm_r.global_position = body.global_position
 			print("left arm")
 		if _name.contains("thigh_L"):
+			parts_hit.append("thigh_L")
 			man.leg_l.hide()
 			body.get_child(0).set_deferred("disabled", true)
 			var leg_l := LEG_L.instantiate()
@@ -68,6 +73,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			leg_l.global_position = body.global_position
 			print("left leg")
 		if _name.contains("thigh_R"):
+			parts_hit.append("thigh_R")
 			man.leg_r.hide()
 			body.get_child(0).set_deferred("disabled", true)
 			var leg_r := LEG_R.instantiate()
