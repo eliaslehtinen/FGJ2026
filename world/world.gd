@@ -11,6 +11,10 @@ extends Node3D
 @onready var audio_stream_player_hurray: AudioStreamPlayer3D = $Characters/AudioStreamPlayer3DHurray
 @onready var audio_stream_player_riot: AudioStreamPlayer3D = $Characters/AudioStreamPlayer3DRiot
 
+@onready var men: Node3D = $Men
+var last_man_killed: Man
+@onready var timer_man_respawn: Timer = $TimerManRespawn
+
 var tween_noise: Tween ## Tween to tween the volume of crowd noise
 
 var used_at_start_menu: bool = false
@@ -63,11 +67,13 @@ func _on_player_attacked() -> void:
 	tween_noise.tween_property(audio_stream_player_noise, "volume_db", 0, 3.5)
 
 
-func _on_player_hit_head() -> void:
+func _on_player_hit_head(man_hit: Man) -> void:
+	print("player hit head", man_hit)
 	if audio_stream_player_riot.playing:
 		audio_stream_player_riot.stop()
 
 	audio_stream_player_hurray.play()
+	last_man_killed = man_hit
 
 
 func _on_player_hit_other() -> void:
@@ -75,3 +81,8 @@ func _on_player_hit_other() -> void:
 		audio_stream_player_hurray.stop()
 
 	audio_stream_player_riot.play()
+
+
+func _on_timer_man_respawn_timeout() -> void:
+	print("Timer respawn")
+	print(last_man_killed)

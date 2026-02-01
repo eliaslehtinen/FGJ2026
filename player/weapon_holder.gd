@@ -9,10 +9,10 @@ const BLOOD_SOUND: PackedScene = preload("res://particles/blood_sound.tscn")
 var current_weapon: Node3D
 
 const HEAD = preload("res://skeletor/limbs/head.tscn")
-#const ARM_L = preload("res://skeletor/limbs/arm_l.tscn")
-#const ARM_R = preload("res://skeletor/limbs/arm_r.tscn")
-#const LEG_L = preload("res://skeletor/limbs/leg_l.tscn")
-#const LEG_R = preload("res://skeletor/limbs/leg_r.tscn")
+const ARM_L = preload("res://skeletor/limbs/arm_l.tscn")
+const ARM_R = preload("res://skeletor/limbs/arm_r.tscn")
+const LEG_L = preload("res://skeletor/limbs/leg_l.tscn")
+const LEG_R = preload("res://skeletor/limbs/leg_r.tscn")
 
 func _ready() -> void:
 	current_weapon = axe
@@ -35,12 +35,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 		var man: Man = body.owner
 		var _name: String = body.name
-		print(_name)
+		print("Name", _name)
 		if _name.contains("head"):
-			## Head
 			man.head.hide()
-			## Spawn head
-			owner.hit_head.emit()
+			body.get_child(0).set_deferred("disabled", true)
+			owner.hit_head.emit(man)
 			print("head")
 			var head := HEAD.instantiate()
 			get_tree().root.add_child(head)
@@ -48,14 +47,32 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			return
 
 		if _name.contains("shoulder_L") or _name.contains("arm_L"):
-			## Left arm
+			man.arm_l.hide()
+			body.get_child(0).set_deferred("disabled", true)
+			var arm_l := ARM_L.instantiate()
+			get_tree().root.add_child(arm_l)
+			arm_l.global_position = body.global_position
 			print("left arm")
 		if _name.contains("shoulder_R") or _name.contains("arm_R"):
-			## Right arm
-			print("right arm")
+			man.arm_r.hide()
+			body.get_child(0).set_deferred("disabled", true)
+			var arm_r := ARM_R.instantiate()
+			get_tree().root.add_child(arm_r)
+			arm_r.global_position = body.global_position
+			print("left arm")
 		if _name.contains("thigh_L"):
+			man.leg_l.hide()
+			body.get_child(0).set_deferred("disabled", true)
+			var leg_l := LEG_L.instantiate()
+			get_tree().root.add_child(leg_l)
+			leg_l.global_position = body.global_position
 			print("left leg")
 		if _name.contains("thigh_R"):
+			man.leg_r.hide()
+			body.get_child(0).set_deferred("disabled", true)
+			var leg_r := LEG_R.instantiate()
+			get_tree().root.add_child(leg_r)
+			leg_r.global_position = body.global_position
 			print("right leg")
 
 		if any_hit:

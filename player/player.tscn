@@ -46,7 +46,10 @@ headbob_amplitude = 0.03
 [node name="HUD" parent="." unique_id=977719269 instance=ExtResource("2_rkbax")]
 material = null
 
-[node name="2dHood" parent="HUD/SubViewport" parent_id_path=PackedInt32Array(977719269, 522104854) index="0" unique_id=1823347437]
+[node name="SubViewport" parent="HUD" index="0" unique_id=522104854]
+size = Vector2i(1920, 1080)
+
+[node name="2dHood" parent="HUD/SubViewport" index="0" unique_id=1823347437]
 player = NodePath("../../..")
 
 [node name="CameraHolder" type="Node3D" parent="." unique_id=1902146556]

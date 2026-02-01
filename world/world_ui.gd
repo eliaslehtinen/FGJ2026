@@ -1,10 +1,12 @@
 extends Control
 
 @onready var panel_container: PanelContainer = $PanelContainer
+@onready var label_good_job: Label = $LabelGoodJob
 @onready var player: Player = $"../Player"
 
 func _ready() -> void:
 	panel_container.hide()
+	label_good_job.hide()
 
 
 func _on_button_quit_pressed() -> void:

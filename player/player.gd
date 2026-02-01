@@ -6,7 +6,7 @@ const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tsc
 signal hovering
 signal attacked
 
-signal hit_head
+signal hit_head(man: Man)
 signal hit_other
 
 @onready var hud: SubViewportContainer = $HUD
@@ -183,7 +183,7 @@ func attacking() -> void:
 			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(-80), 0.2)
 			attack_tween.tween_property(weapon_holder, "rotation:z", deg_to_rad(0), 0.2)
 			await attack_tween.finished
-			print("Tween attack finish")
+			#print("Tween attack finish")
 			attacked.emit()
 			timer_attack.start()
 			await timer_attack.timeout

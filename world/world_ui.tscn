@@ -15,6 +15,19 @@ size_flags_vertical = 10
 mouse_filter = 1
 script = ExtResource("1_3d62h")
 
+[node name="LabelGoodJob" type="Label" parent="." unique_id=1573950042]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_right = 74.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Good job!"
+horizontal_alignment = 1
+
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1968635963]
 layout_mode = 1
 anchors_preset = 8

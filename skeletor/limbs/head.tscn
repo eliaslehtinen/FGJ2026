@@ -3,7 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://70es11l0llik" path="res://skeletor/limbs/head.tres" id="1_ibic7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ibic7"]
-radius = 0.12834427
+radius = 0.122280985
 
 [node name="Head" type="RigidBody3D" unique_id=806055106]
 
