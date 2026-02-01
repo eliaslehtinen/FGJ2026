@@ -27,4 +27,24 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 			$axe/AudioStreamPlayer3DHit.play()
 
-		print(body.name)
+		var man: Man = body.owner
+		var _name: String = body.name
+		print(_name)
+		if _name.contains("head"):
+			## Head
+			man.head.hide()
+			print("head")
+			return
+
+		if _name.contains("shoulder_L") or _name.contains("arm_L"):
+			## Left arm
+			print("left arm")
+		if _name.contains("shoulder_R") or _name.contains("arm_R"):
+			## Right arm
+			print("right arm")
+		if _name.contains("thigh_L"):
+			print("left leg")
+		if _name.contains("thigh_R"):
+			print("right leg")
+
+		#hit_something.emit()

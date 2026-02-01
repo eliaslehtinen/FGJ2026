@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dyjndf0d40vmi" path="res://graphics/textures/rockground_seamless_NORMAL.png" id="5_ocfjn"]
 [ext_resource type="PackedScene" uid="uid://bvtyty06lexgg" path="res://graphics/3d/cabbage_wagon.blend" id="7_sc4t8"]
 [ext_resource type="PackedScene" uid="uid://d01qcvy8lw52f" path="res://world/character.tscn" id="8_j34ew"]
+[ext_resource type="PackedScene" uid="uid://4sf8iqthhbnx" path="res://graphics/3d/man.blend" id="9_0pnie"]
+[ext_resource type="PackedScene" uid="uid://cvcklkwgself5" path="res://man.tscn" id="9_llyeo"]
 [ext_resource type="PackedScene" uid="uid://bnugpcq32l1bt" path="res://graphics/3d/barrel.blend" id="9_mad0u"]
 [ext_resource type="AudioStream" uid="uid://biufcbe77uouk" path="res://sounds/taustamelu.wav" id="9_p2iis"]
 [ext_resource type="PackedScene" uid="uid://cnieisctv7u27" path="res://world/castle_door_with_material.tscn" id="10_mad0u"]
@@ -191,6 +193,9 @@ one_shot = true
 [node name="Skeletor" parent="." unique_id=1062086467 instance=ExtResource("15_b2suy")]
 transform = Transform3D(0.99877006, 0, -0.049581923, 0.04597027, 0.37467134, 0.92601746, 0.018576927, -0.9271578, 0.37421054, 5.6536055, 0.28456736, 0)
 
+[node name="man3" parent="." unique_id=1275591531 instance=ExtResource("9_llyeo")]
+transform = Transform3D(1, 0, 0, 0, 0.41561413, 0.909541, 0, -0.909541, 0.41561413, 0, 0.59591746, 0)
+
 [node name="Characters" type="Node3D" parent="." unique_id=1306213942]
 
 [node name="character" parent="Characters" unique_id=1767799220 instance=ExtResource("8_j34ew")]
@@ -223,8 +228,7 @@ transform = Transform3D(-0.046930265, 0.010960885, 0.2961036, 0.0002863238, 0.29
 [node name="AudioStreamPlayer3DNoise" type="AudioStreamPlayer3D" parent="Characters" unique_id=336421368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.960711, 3.083035, -20.710903)
 stream = ExtResource("9_p2iis")
-volume_db = -5.0
-max_distance = 100.0
+unit_size = 15.0
 
 [node name="Props" type="Node3D" parent="." unique_id=2010207608]
 
@@ -352,7 +356,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -3
 [node name="wood_house" parent="Props" unique_id=1641484166 instance=ExtResource("21_gi7ib")]
 transform = Transform3D(-3.496911e-07, 0, 8, 0, 8, 0, -8, 0, -3.496911e-07, 26.12967, -2.6839385, 23.871367)
 
-[node name="brick_house" parent="Props/wood_house" index="0" unique_id=1342600881]
+[node name="brick_house" parent="Props/wood_house" index="0" unique_id=1175385299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06121242, 0)
 
 [node name="circus_tent" parent="." unique_id=344352713 instance=ExtResource("22_0pnie")]
@@ -367,6 +371,11 @@ transform = Transform3D(-2.2, 0, -1.923301e-07, 0, 2.2, 0, 1.923301e-07, 0, -2.2
 [node name="dictator_statue" parent="." unique_id=404421879 instance=ExtResource("24_2tavo")]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 28.831684, 0.26368207, -19.167809)
 
+[node name="man2" parent="." unique_id=2025878635 instance=ExtResource("9_0pnie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7225013, 0.33085033, -7.390156)
+
+[connection signal="attacked" from="Player" to="." method="_on_player_attacked"]
+[connection signal="hovering" from="Player" to="." method="_on_player_hovering"]
 [connection signal="finished" from="BackgroundMusicPlayer" to="." method="_on_background_music_player_finished"]
 [connection signal="timeout" from="TimerMusic" to="." method="_on_timer_music_timeout"]
 [connection signal="finished" from="Characters/AudioStreamPlayer3DNoise" to="." method="_on_audio_stream_player_3d_noise_finished"]

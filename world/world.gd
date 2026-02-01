@@ -8,6 +8,8 @@ extends Node3D
 @onready var timer_music: Timer = $TimerMusic
 @onready var audio_stream_player_noise: AudioStreamPlayer3D = $Characters/AudioStreamPlayer3DNoise
 
+var tween_noise: Tween ## Tween to tween the volume of crowd noise
+
 var used_at_start_menu: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -39,4 +41,20 @@ func _on_background_music_player_finished() -> void:
 
 
 func _on_audio_stream_player_3d_noise_finished() -> void:
-	$Characters/AudioStreamPlayer3DNoise.play()
+	audio_stream_player_noise.play()
+
+
+func _on_player_hovering() -> void:
+	if tween_noise and tween_noise.is_running():
+		tween_noise.kill()
+
+	tween_noise = create_tween()
+	tween_noise.tween_property(audio_stream_player_noise, "volume_db", -80, 5.0)
+
+
+func _on_player_attacked() -> void:
+	if tween_noise and tween_noise.is_running():
+		tween_noise.kill()
+
+	tween_noise = create_tween()
+	tween_noise.tween_property(audio_stream_player_noise, "volume_db", 0, 3.5)

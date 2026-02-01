@@ -12,6 +12,8 @@ func _on_button_quit_pressed() -> void:
 
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("reload"):
+		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("quit"):
 		var paused: bool = get_tree().paused
 		if paused:

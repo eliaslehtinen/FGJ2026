@@ -3,13 +3,15 @@ class_name Player
 
 const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tscn")
 
+signal hovering
+signal attacked
+
 @onready var hud: SubViewportContainer = $HUD
 @onready var camera_holder: Node3D = $CameraHolder
 @onready var camera: Camera3D = $CameraHolder/Camera3D
 @onready var ray_cast: RayCast3D = $CameraHolder/RayCast3D
 @onready var weapon_holder: WeaponHolder = $WeaponHolder
 @onready var drag_point: Node3D = $DragPoint
-
 
 @export_group("Movement stats")
 @export var speed: float = 6.5
@@ -26,7 +28,7 @@ var headbob_time := 0.0
 
 @onready var audio_walk_ground: AudioStreamPlayer = $AudioWalkGround
 @onready var audio_walk_wood: AudioStreamPlayer = $AudioWalkWood
-var is_on_wood: bool = false
+var is_on_execution: bool = false
 
 const SENSITIVTY_DIVIDER: int = 100
 var gravity_multiplier: float = 1.2
@@ -132,6 +134,8 @@ func attacking() -> void:
 			attack_state = AttackState.HOVERING
 
 		AttackState.HOVERING:
+			if is_on_execution:
+				hovering.emit()
 			## Lock in hovering position when pressed click
 			## TODO: keep mouse pressed and lock when release
 			if Input.is_action_just_pressed("attack"):
@@ -184,6 +188,7 @@ func attacking() -> void:
 			attack_tween.tween_property(weapon_holder, "rotation:z", deg_to_rad(0), 0.2)
 			await attack_tween.finished
 			print("Tween attack finish")
+			attacked.emit()
 			timer_attack.start()
 			await timer_attack.timeout
 			weapon_area.monitoring = false
@@ -262,7 +267,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	if velocity != Vector3.ZERO and is_on_floor():
-		if is_on_wood:
+		if is_on_execution:
 			if not audio_walk_wood.playing:
 				audio_walk_wood.play()
 				print("play wood")
@@ -284,8 +289,8 @@ func headbob(hb_time: float) -> Vector3:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	is_on_wood = true
+	is_on_execution = true
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	is_on_wood = false
+	is_on_execution = false
