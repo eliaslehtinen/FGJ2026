@@ -17,8 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://s5c4vpug6dn" path="res://skeletor/skeletor.tscn" id="15_b2suy"]
 [ext_resource type="PackedScene" uid="uid://d0cufsfm1oith" path="res://graphics/3d/flagpole.blend" id="16_h8lre"]
 [ext_resource type="PackedScene" uid="uid://bpj8d2h8ds273" path="res://graphics/3d/market_stand.blend" id="17_ysn08"]
+[ext_resource type="PackedScene" uid="uid://dqomx1vawxu6" path="res://graphics/3d/breads/breads.tscn" id="20_p2iis"]
+[ext_resource type="PackedScene" uid="uid://hgdhth2t2esu" path="res://graphics/3d/castle_house.blend" id="21_o1net"]
+[ext_resource type="PackedScene" uid="uid://bqv50fhdhw205" path="res://graphics/3d/dictator_statue.blend" id="22_3ljsx"]
 [ext_resource type="PackedScene" uid="uid://ca64lw1ilej8m" path="res://graphics/3d/character.blend" id="22_o1net"]
 [ext_resource type="AudioStream" uid="uid://cs2fqhkij8on1" path="res://sounds/taustamusiikki.wav" id="23_3ljsx"]
+[ext_resource type="PackedScene" uid="uid://cv88066xp68lx" path="res://graphics/3d/circus_tent/circus_tent.tscn" id="23_gi7ib"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h5o24"]
 
@@ -302,7 +306,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -3
 [node name="character2" parent="." unique_id=2144983009 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.10424765, 0, 0.28130487, 0, 0.29999998, 0, -0.28130487, 0, 0.10424765, 11.755743, 0.8760307, -12.905071)
 
-[node name="Skeleton3D" parent="character2/Armature" parent_id_path=PackedInt32Array(2144983009, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character2/Armature" parent_id_path=PackedInt32Array(2144983009, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -313,7 +317,7 @@ bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.9177280
 [node name="character3" parent="." unique_id=558848923 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.10424765, 0, 0.28130487, 0, 0.29999998, 0, -0.28130487, 0, 0.10424765, 11.755743, 0.8760307, -16.78601)
 
-[node name="Skeleton3D" parent="character3/Armature" parent_id_path=PackedInt32Array(558848923, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character3/Armature" parent_id_path=PackedInt32Array(558848923, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -321,13 +325,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character3/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character3/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.8248669, 0, 0.5653269, 0, 1, 0, -0.5653269, 0, 0.8248669, 0, 0, 0)
 
 [node name="character4" parent="." unique_id=638343283 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.10424765, 0, 0.28130487, 0, 0.29999998, 0, -0.28130487, 0, 0.10424765, 11.755743, 0.8760307, -21.160471)
 
-[node name="Skeleton3D" parent="character4/Armature" parent_id_path=PackedInt32Array(638343283, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character4/Armature" parent_id_path=PackedInt32Array(638343283, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -335,13 +339,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character4/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character4/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.95222, 0, 0.3054128, 0, 1, 0, -0.3054128, 0, 0.95222, 0, 0, 0)
 
 [node name="character5" parent="." unique_id=1057312925 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.10424765, 0, 0.28130487, 0, 0.29999998, 0, -0.28130487, 0, 0.10424765, 11.755743, 0.8760307, -24.733778)
 
-[node name="Skeleton3D" parent="character5/Armature" parent_id_path=PackedInt32Array(1057312925, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character5/Armature" parent_id_path=PackedInt32Array(1057312925, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -349,13 +353,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character5/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character5/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.9086467, 0, 0.41756576, 0, 1, 0, -0.41756576, 0, 0.9086467, 0, 0, 0)
 
 [node name="character6" parent="." unique_id=1924916622 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.15687902, 0, 0.25571266, 0, 0.29999998, 0, -0.25571266, 0, 0.15687902, 13.585223, 0.8760307, -11.671305)
 
-[node name="Skeleton3D" parent="character6/Armature" parent_id_path=PackedInt32Array(1924916622, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character6/Armature" parent_id_path=PackedInt32Array(1924916622, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -366,7 +370,7 @@ bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.9177280
 [node name="character7" parent="." unique_id=1924491276 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.15687902, 0, 0.25571266, 0, 0.29999998, 0, -0.25571266, 0, 0.15687902, 14.338702, 0.8760307, -15.478397)
 
-[node name="Skeleton3D" parent="character7/Armature" parent_id_path=PackedInt32Array(1924491276, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character7/Armature" parent_id_path=PackedInt32Array(1924491276, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -374,13 +378,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character7/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character7/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.8248669, 0, 0.5653269, 0, 1, 0, -0.5653269, 0, 0.8248669, 0, 0, 0)
 
 [node name="character8" parent="." unique_id=1003433782 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.15687902, 0, 0.25571266, 0, 0.29999998, 0, -0.25571266, 0, 0.15687902, 15.187998, 0.8760307, -19.76962)
 
-[node name="Skeleton3D" parent="character8/Armature" parent_id_path=PackedInt32Array(1003433782, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character8/Armature" parent_id_path=PackedInt32Array(1003433782, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -388,13 +392,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character8/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character8/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.95222, 0, 0.3054128, 0, 1, 0, -0.3054128, 0, 0.95222, 0, 0, 0)
 
 [node name="character9" parent="." unique_id=564964497 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.15687902, 0, 0.25571266, 0, 0.29999998, 0, -0.25571266, 0, 0.15687902, 15.881751, 0.8760307, -23.274935)
 
-[node name="Skeleton3D" parent="character9/Armature" parent_id_path=PackedInt32Array(564964497, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character9/Armature" parent_id_path=PackedInt32Array(564964497, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -402,13 +406,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character9/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character9/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.9086467, 0, 0.41756576, 0, 1, 0, -0.41756576, 0, 0.9086467, 0, 0, 0)
 
 [node name="character10" parent="." unique_id=932491605 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.11215864, 0, 0.2782453, 0, 0.29999998, 0, -0.2782453, 0, 0.11215864, 18.241085, 0.8760307, -11.559698)
 
-[node name="Skeleton3D" parent="character10/Armature" parent_id_path=PackedInt32Array(932491605, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character10/Armature" parent_id_path=PackedInt32Array(932491605, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -419,7 +423,7 @@ bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.9177280
 [node name="character11" parent="." unique_id=449491731 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.11215864, 0, 0.2782453, 0, 0.29999998, 0, -0.2782453, 0, 0.11215864, 18.3508, 0.8760307, -15.439086)
 
-[node name="Skeleton3D" parent="character11/Armature" parent_id_path=PackedInt32Array(449491731, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character11/Armature" parent_id_path=PackedInt32Array(449491731, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -427,13 +431,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character11/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character11/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.8248669, 0, 0.5653269, 0, 1, 0, -0.5653269, 0, 0.8248669, 0, 0, 0)
 
 [node name="character12" parent="." unique_id=1003851942 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.11215864, 0, 0.2782453, 0, 0.29999998, 0, -0.2782453, 0, 0.11215864, 18.47447, 0.8760307, -19.811798)
 
-[node name="Skeleton3D" parent="character12/Armature" parent_id_path=PackedInt32Array(1003851942, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character12/Armature" parent_id_path=PackedInt32Array(1003851942, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -441,13 +445,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character12/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character12/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.95222, 0, 0.30541277, 0, 1, 0, -0.30541277, 0, 0.95222, -4.228256, 0, 1.7043762)
 
 [node name="character13" parent="." unique_id=1353424857 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.11215864, 0, 0.2782453, 0, 0.29999998, 0, -0.2782453, 0, 0.11215864, 18.575489, 0.8760307, -23.383675)
 
-[node name="Skeleton3D" parent="character13/Armature" parent_id_path=PackedInt32Array(1353424857, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character13/Armature" parent_id_path=PackedInt32Array(1353424857, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -455,13 +459,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character13/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character13/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.9086467, 0, 0.41756576, 0, 1, 0, -0.41756576, 0, 0.9086467, 0, 0, 0)
 
 [node name="character14" parent="." unique_id=1433488426 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.036321744, 0, 0.29779312, 0, 0.29999998, 0, -0.29779312, 0, 0.036321744, 16.165005, 0.8760307, -29.65672)
 
-[node name="Skeleton3D" parent="character14/Armature" parent_id_path=PackedInt32Array(1433488426, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character14/Armature" parent_id_path=PackedInt32Array(1433488426, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -472,7 +476,7 @@ bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.9177280
 [node name="character15" parent="." unique_id=963468744 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.036321744, 0, 0.29779312, 0, 0.29999998, 0, -0.29779312, 0, 0.036321744, 15.266922, 0.8760307, -33.432316)
 
-[node name="Skeleton3D" parent="character15/Armature" parent_id_path=PackedInt32Array(963468744, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character15/Armature" parent_id_path=PackedInt32Array(963468744, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -480,13 +484,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character15/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character15/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.8248669, 0, 0.5653269, 0, 1, 0, -0.5653269, 0, 0.8248669, 0, 0, 0)
 
 [node name="character16" parent="." unique_id=667550013 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.036321744, 0, 0.29779312, 0, 0.29999998, 0, -0.29779312, 0, 0.036321744, 14.254637, 0.8760307, -37.688038)
 
-[node name="Skeleton3D" parent="character16/Armature" parent_id_path=PackedInt32Array(667550013, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character16/Armature" parent_id_path=PackedInt32Array(667550013, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -494,13 +498,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character16/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character16/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.95222, 0, 0.3054128, 0, 1, 0, -0.3054128, 0, 0.95222, 0, 0, 0)
 
 [node name="character17" parent="." unique_id=300340160 instance=ExtResource("22_o1net")]
 transform = Transform3D(0.036321744, 0, 0.29779312, 0, 0.29999998, 0, -0.29779312, 0, 0.036321744, 13.427744, 0.8760307, -41.164352)
 
-[node name="Skeleton3D" parent="character17/Armature" parent_id_path=PackedInt32Array(300340160, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character17/Armature" parent_id_path=PackedInt32Array(300340160, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -508,13 +512,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character17/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character17/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.9086467, 0, 0.41756576, 0, 1, 0, -0.41756576, 0, 0.9086467, 0, 0, 0)
 
 [node name="character18" parent="." unique_id=1428110122 instance=ExtResource("22_o1net")]
 transform = Transform3D(-0.0048640072, 0, 0.29996058, 0, 0.29999998, 0, -0.29996058, 0, -0.0048640072, 13.339982, 0.8760307, -29.901949)
 
-[node name="Skeleton3D" parent="character18/Armature" parent_id_path=PackedInt32Array(1428110122, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character18/Armature" parent_id_path=PackedInt32Array(1428110122, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -522,13 +526,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character18/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character18/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(1.0000001, 0, 1.8626451e-09, 0, 1, 0, -1.8626451e-09, 0, 1.0000001, -9.982613, 0, -0.16187286)
 
 [node name="character19" parent="." unique_id=1988494665 instance=ExtResource("22_o1net")]
 transform = Transform3D(-0.0048640072, 0, 0.29996058, 0, 0.29999998, 0, -0.29996058, 0, -0.0048640072, 11.932561, 0.8760307, -33.518692)
 
-[node name="Skeleton3D" parent="character19/Armature" parent_id_path=PackedInt32Array(1988494665, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character19/Armature" parent_id_path=PackedInt32Array(1988494665, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -536,13 +540,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character19/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character19/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.8248669, 0, 0.5653269, 0, 1, 0, -0.5653269, 0, 0.8248669, 0, 0, 0)
 
 [node name="character20" parent="." unique_id=1516571956 instance=ExtResource("22_o1net")]
 transform = Transform3D(-0.0048640072, 0, 0.29996058, 0, 0.29999998, 0, -0.29996058, 0, -0.0048640072, 10.346167, 0.8760307, -37.595364)
 
-[node name="Skeleton3D" parent="character20/Armature" parent_id_path=PackedInt32Array(1516571956, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character20/Armature" parent_id_path=PackedInt32Array(1516571956, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -550,13 +554,13 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character20/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character20/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.95222, 0, 0.3054128, 0, 1, 0, -0.3054128, 0, 0.95222, 0, 0, 0)
 
 [node name="character21" parent="." unique_id=1815731325 instance=ExtResource("22_o1net")]
 transform = Transform3D(-0.0048640072, 0, 0.29996058, 0, 0.29999998, 0, -0.29996058, 0, -0.0048640072, 9.050308, 0.8760307, -40.92542)
 
-[node name="Skeleton3D" parent="character21/Armature" parent_id_path=PackedInt32Array(1815731325, 1465638449) index="0" unique_id=336228745]
+[node name="Skeleton3D" parent="character21/Armature" parent_id_path=PackedInt32Array(1815731325, 657316745) index="0" unique_id=1318917053]
 bones/1/rotation = Quaternion(-0.01592233, 4.227558e-05, 0.014319576, 0.9997707)
 bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
 bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
@@ -564,11 +568,29 @@ bones/6/rotation = Quaternion(-0.043122698, 0.034442898, 0.037809584, 0.99775976
 bones/8/rotation = Quaternion(-0.32371172, -0.047019877, -0.067093074, 0.9426019)
 bones/10/rotation = Quaternion(-0.38588485, -0.09377183, 0.0086532375, 0.91772807)
 
-[node name="Cube" parent="character21/Armature/Skeleton3D" index="0" unique_id=76300351]
+[node name="Cube" parent="character21/Armature/Skeleton3D" index="0" unique_id=630710527]
 transform = Transform3D(0.9086467, 0, 0.41756576, 0, 1, 0, -0.41756576, 0, 0.9086467, 0, 0, 0)
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=252146769]
 stream = ExtResource("23_3ljsx")
+
+[node name="breads" parent="." unique_id=1976868607 instance=ExtResource("20_p2iis")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -4.5374513, 1.3035219, -36.916214)
+
+[node name="breads2" parent="." unique_id=1906504169 instance=ExtResource("20_p2iis")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -4.5612593, 1.3035221, -49.534386)
+
+[node name="castle_house2" parent="." unique_id=90658581 instance=ExtResource("21_o1net")]
+transform = Transform3D(-2.2, 0, 3.3219078e-07, 0, 2.2, 0, -3.3219078e-07, 0, -2.2, 40.331497, 0.0027103424, -31.280224)
+
+[node name="castle_house3" parent="." unique_id=2052784655 instance=ExtResource("21_o1net")]
+transform = Transform3D(-2.2, 0, 3.3219078e-07, 0, 2.2, 0, -3.3219078e-07, 0, -2.2, 40.331497, 0.0027103424, -18.917667)
+
+[node name="dictator_statue" parent="." unique_id=404421879 instance=ExtResource("22_3ljsx")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 28.25697, 0.8515234, -17.420326)
+
+[node name="circus_tent" parent="." unique_id=1951259805 instance=ExtResource("23_gi7ib")]
+transform = Transform3D(1.1628003, 0, 2.213119, 0, 2.5, 0, -2.213119, 0, 1.1628003, 0.8746648, -0.44533157, 14.66031)
 
 [connection signal="body_entered" from="Execution/Area3D" to="Player" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Execution/Area3D" to="Player" method="_on_area_3d_body_exited"]
