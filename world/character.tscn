@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d01qcvy8lw52f"]
+
+[ext_resource type="PackedScene" uid="uid://ca64lw1ilej8m" path="res://graphics/3d/character.blend" id="1_vhi8l"]
+[ext_resource type="Script" uid="uid://orel7sgixrvk" path="res://world/character.gd" id="2_8t7jg"]
+
+[node name="character" unique_id=1767799220 instance=ExtResource("1_vhi8l")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+script = ExtResource("2_8t7jg")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(621368225) index="0" unique_id=733058786]
+bones/1/rotation = Quaternion(-0.018709363, 0.0055660764, 0.014390779, 0.9997059)
+bones/3/rotation = Quaternion(-0.022838121, -0.18753053, -0.3293354, 0.925121)
+bones/5/rotation = Quaternion(-0.040354226, 0.019435585, 0.24141136, 0.96938866)
+bones/6/rotation = Quaternion(-0.062269904, 0.03572847, 0.03696114, 0.9967346)
+bones/8/rotation = Quaternion(-0.32914957, -0.039274722, -0.05196988, 0.9420282)
+bones/10/rotation = Quaternion(-0.40054476, -0.055266127, 0.006982515, 0.9145823)

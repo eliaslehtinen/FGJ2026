@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b1jyxtw4rvs43" path="res://graphics/3d/axe.blend" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://bqyxybxqbbcxd" path="res://player/weapon_holder.gd" id="3_yw30f"]
 [ext_resource type="AudioStream" uid="uid://bg88iat1lvgbu" path="res://sounds/maa_askel_1.wav" id="5_ebec5"]
+[ext_resource type="AudioStream" uid="uid://c7oe025lrvbxf" path="res://sounds/kirves_heilautus.wav" id="5_yllr7"]
+[ext_resource type="AudioStream" uid="uid://d15ufbtu3eu3p" path="res://sounds/ruumiin_maiskinta.wav" id="6_kb6p2"]
 [ext_resource type="AudioStream" uid="uid://bd4djxy5o18do" path="res://sounds/maa_askel_2.wav" id="6_yllr7"]
 [ext_resource type="AudioStream" uid="uid://dw0mgm3cuiht6" path="res://sounds/maa_askel_3.wav" id="7_kb6p2"]
 [ext_resource type="AudioStream" uid="uid://s7mjfmwapiuf" path="res://sounds/maa_askel_4.wav" id="8_wodsf"]
@@ -20,7 +22,7 @@ height = 1.8
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yw30f"]
-size = Vector3(5.3711243, 0.37841797, 3.5825806)
+size = Vector3(6.3188553, 0.37841797, 4.3054504)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_65viv"]
 streams_count = 4
@@ -72,12 +74,20 @@ script = ExtResource("3_yw30f")
 [node name="axe" parent="WeaponHolder" unique_id=336882533 instance=ExtResource("3_g1dw6")]
 transform = Transform3D(-0.08455249, 0.17945506, 0.025430823, 0.04526732, 0.048081003, -0.18878308, -0.17550427, -0.074054524, -0.06094415, -0.4957018, 0, -0.8963047)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="WeaponHolder/axe" unique_id=1461350629]
+transform = Transform3D(5, -1.3113022e-06, -1.9073486e-06, -1.1920929e-07, 5.0000014, 5.9604645e-08, 0, -5.9604645e-08, 5.0000024, 0, 0, 0)
+stream = ExtResource("5_yllr7")
+
+[node name="AudioStreamPlayer3DHit" type="AudioStreamPlayer3D" parent="WeaponHolder/axe" unique_id=1211833153]
+transform = Transform3D(5, -1.3113022e-06, -1.9073486e-06, -1.1920929e-07, 5.0000014, 5.9604645e-08, 0, -5.9604645e-08, 5.0000024, 0, 0, 0)
+stream = ExtResource("6_kb6p2")
+
 [node name="Area3D" type="Area3D" parent="WeaponHolder/axe" unique_id=472990583]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WeaponHolder/axe/Area3D" unique_id=1084505521]
-transform = Transform3D(0.9999999, 0, 0, -2.3841858e-07, 1, 0, -5.9604645e-08, 0, 1, 0.45145226, -0.046902657, -4.7814627)
+transform = Transform3D(0.9999999, 0, 0, -2.3841858e-07, 1, 0, -5.9604645e-08, 0, 1, 0.92531776, -0.046902776, -5.1428976)
 shape = SubResource("BoxShape3D_yw30f")
 
 [node name="LabelState" type="Label" parent="." unique_id=1190063454]
