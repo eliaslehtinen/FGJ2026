@@ -19,7 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://s5c4vpug6dn" path="res://skeletor/skeletor.tscn" id="15_b2suy"]
 [ext_resource type="PackedScene" uid="uid://d0cufsfm1oith" path="res://graphics/3d/flagpole.blend" id="16_h8lre"]
 [ext_resource type="PackedScene" uid="uid://bpj8d2h8ds273" path="res://graphics/3d/market_stand.blend" id="17_ysn08"]
+[ext_resource type="PackedScene" uid="uid://d2kidjca25poy" path="res://graphics/3d/wood_house.blend" id="21_gi7ib"]
+[ext_resource type="PackedScene" uid="uid://cv88066xp68lx" path="res://graphics/3d/circus_tent/circus_tent.tscn" id="22_0pnie"]
 [ext_resource type="AudioStream" uid="uid://cs2fqhkij8on1" path="res://sounds/taustamusiikki.wav" id="23_3ljsx"]
+[ext_resource type="PackedScene" uid="uid://hgdhth2t2esu" path="res://graphics/3d/castle_house.blend" id="23_llyeo"]
+[ext_resource type="PackedScene" uid="uid://bqv50fhdhw205" path="res://graphics/3d/dictator_statue.blend" id="24_2tavo"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h5o24"]
 
@@ -345,6 +349,24 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -4
 [node name="market_stand4" parent="Props" unique_id=1084200816 instance=ExtResource("17_ysn08")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -36.929012)
 
+[node name="wood_house" parent="Props" unique_id=1641484166 instance=ExtResource("21_gi7ib")]
+transform = Transform3D(-3.496911e-07, 0, 8, 0, 8, 0, -8, 0, -3.496911e-07, 26.12967, -2.6839385, 23.871367)
+
+[node name="brick_house" parent="Props/wood_house" index="0" unique_id=1342600881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06121242, 0)
+
+[node name="circus_tent" parent="." unique_id=344352713 instance=ExtResource("22_0pnie")]
+transform = Transform3D(1.7539217, 0, 1.7815044, 0, 2.5, 0, -1.7815044, 0, 1.7539217, 0.47397232, -0.2526617, 15.481886)
+
+[node name="castle_house2" parent="." unique_id=90658581 instance=ExtResource("23_llyeo")]
+transform = Transform3D(-2.2, 0, -1.923301e-07, 0, 2.2, 0, 1.923301e-07, 0, -2.2, 40.43476, 0.0025420648, -28.346727)
+
+[node name="castle_house3" parent="." unique_id=1612041921 instance=ExtResource("23_llyeo")]
+transform = Transform3D(-2.2, 0, -1.923301e-07, 0, 2.2, 0, 1.923301e-07, 0, -2.2, 40.43476, 0.0025420648, -14.841007)
+
+[node name="dictator_statue" parent="." unique_id=404421879 instance=ExtResource("24_2tavo")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 28.831684, 0.26368207, -19.167809)
+
 [connection signal="finished" from="BackgroundMusicPlayer" to="." method="_on_background_music_player_finished"]
 [connection signal="timeout" from="TimerMusic" to="." method="_on_timer_music_timeout"]
 [connection signal="finished" from="Characters/AudioStreamPlayer3DNoise" to="." method="_on_audio_stream_player_3d_noise_finished"]
@@ -352,3 +374,4 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -3
 [connection signal="body_exited" from="Props/Execution/Area3D" to="Player" method="_on_area_3d_body_exited"]
 
 [editable path="Props/market_stand2"]
+[editable path="Props/wood_house"]
