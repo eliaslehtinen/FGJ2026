@@ -6,6 +6,9 @@ const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tsc
 signal hovering
 signal attacked
 
+signal hit_head
+signal hit_other
+
 @onready var hud: SubViewportContainer = $HUD
 @onready var camera_holder: Node3D = $CameraHolder
 @onready var camera: Camera3D = $CameraHolder/Camera3D
@@ -101,12 +104,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func check_debug_controls() -> void:
-	# P
-	if Input.is_action_just_pressed("particle"):
-		var particles := BLOOD_PARTICLES.instantiate()
-		get_tree().root.add_child(particles)
-		print_debug("Blood particle instantiated")
-		particles.global_position = global_position - global_basis.z * 1.0
 	# M
 	if Input.is_action_just_pressed("mask"):
 		hud.visible = not hud.visible
@@ -122,7 +119,7 @@ func attacking() -> void:
 			if attack_tween and attack_tween.is_running():
 				return
 
-			print("Tween attacking start")
+			#print("Tween attacking start")
 			attack_tween = create_tween().set_parallel(true)
 			attack_tween.tween_property(camera_holder, "rotation:x", deg_to_rad(40), 1.0)
 			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(25), 1.0)
@@ -130,7 +127,7 @@ func attacking() -> void:
 			attack_tween.tween_property(weapon_holder, "rotation:y", deg_to_rad(-25), 1.5)
 			attack_tween.tween_property(weapon_holder, "rotation:z", deg_to_rad(-25), 1.5)
 			await attack_tween.finished
-			print("Tween attacking finish")
+			#print("Tween attacking finish")
 			attack_state = AttackState.HOVERING
 
 		AttackState.HOVERING:
@@ -152,7 +149,7 @@ func attacking() -> void:
 			if attack_tween and attack_tween.is_running():
 				return
 
-			print("Tween hovering start")
+			#print("Tween hovering start")
 			## Loop swing from left to right and right to left
 			attack_tween = create_tween().set_ease(Tween.EASE_IN_OUT) \
 				.set_trans(Tween.TRANS_CUBIC).set_loops()
@@ -270,10 +267,10 @@ func _physics_process(delta: float) -> void:
 		if is_on_execution:
 			if not audio_walk_wood.playing:
 				audio_walk_wood.play()
-				print("play wood")
+				#print("play wood")
 		elif not audio_walk_ground.playing:
 			audio_walk_ground.play()
-			print("play ground")
+			#print("play ground")
 
 	headbob_time += delta * velocity.length() * float(is_on_floor())
 	$CameraHolder/Camera3D.transform.origin = headbob(headbob_time)

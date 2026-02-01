@@ -83,6 +83,7 @@ transform = Transform3D(0.9999999, 0, 0, -2.3841858e-07, 1, 0, -5.9604645e-08, 0
 shape = SubResource("BoxShape3D_yw30f")
 
 [node name="LabelState" type="Label" parent="." unique_id=1190063454]
+visible = false
 offset_left = 539.0
 offset_top = 312.0
 offset_right = 579.0

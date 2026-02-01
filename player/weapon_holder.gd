@@ -33,6 +33,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		if _name.contains("head"):
 			## Head
 			man.head.hide()
+			## Spawn head
+			owner.hit_head.emit()
 			print("head")
 			return
 
@@ -47,4 +49,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		if _name.contains("thigh_R"):
 			print("right leg")
 
-		#hit_something.emit()
+		if any_hit:
+			owner.hit_other.emit()

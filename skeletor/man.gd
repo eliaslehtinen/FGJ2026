@@ -9,10 +9,6 @@ func _ready() -> void:
 	#physical_bone_simulator.physical_bones_start_simulation()
 	for child in physical_bone_simulator.get_children(true):
 		if child is PhysicalBone3D:
-			var _name: String = child.name
-			if not _name.contains("spine"):
-				child.collision_layer = 2
-
-
-func hide_mesh() -> void:
-	pass
+			#var _name: String = child.name
+			#if not _name.contains("spine"):
+			child.collision_layer = 2

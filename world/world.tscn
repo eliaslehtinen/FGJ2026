@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://cnieisctv7u27" path="res://world/castle_door_with_material.tscn" id="10_mad0u"]
 [ext_resource type="PackedScene" uid="uid://2pubwjgqab6s" path="res://world/castle_tower_with_material.tscn" id="11_ocfjn"]
 [ext_resource type="PackedScene" uid="uid://duoulfqt8q68d" path="res://world/castle_wall_with_material.tscn" id="12_dqqhb"]
+[ext_resource type="AudioStream" uid="uid://x7deu2a33fyp" path="res://sounds/yleiso_hurraus.wav" id="12_k8wd0"]
+[ext_resource type="AudioStream" uid="uid://cp4ovbl35jqi7" path="res://sounds/yleiso_melu.wav" id="13_j7vgi"]
 [ext_resource type="PackedScene" uid="uid://juam5berkyu1" path="res://world/castle_tower_with_material_large.tscn" id="13_ocfjn"]
 [ext_resource type="PackedScene" uid="uid://u8cq57cya00a" path="res://graphics/3d/cabin.blend" id="14_dqqhb"]
 [ext_resource type="PackedScene" uid="uid://s5c4vpug6dn" path="res://skeletor/skeletor.tscn" id="15_b2suy"]
@@ -177,7 +179,7 @@ top_level = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=652687026 instance=ExtResource("1_6xmxd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702957, 1.4977808, 0)
+transform = Transform3D(0.08967658, 0, -0.99597096, 0, 1, 0, 0.99597096, 0, 0.08967658, 0.2970457, 4.048335, -20.41638)
 speed = 5.0
 sprint_speed = 7.0
 sensitivity = 6.0
@@ -194,7 +196,7 @@ one_shot = true
 transform = Transform3D(0.99877006, 0, -0.049581923, 0.04597027, 0.37467134, 0.92601746, 0.018576927, -0.9271578, 0.37421054, 5.6536055, 0.28456736, 0)
 
 [node name="man3" parent="." unique_id=1275591531 instance=ExtResource("9_llyeo")]
-transform = Transform3D(1, 0, 0, 0, 0.41561413, 0.909541, 0, -0.909541, 0.41561413, 0, 0.59591746, 0)
+transform = Transform3D(1, 0, 0, 0, 0.023001343, 0.99973553, 0, -0.99973553, 0.023001343, 1.7457845, 3.0393925, -19.093658)
 
 [node name="Characters" type="Node3D" parent="." unique_id=1306213942]
 
@@ -228,6 +230,16 @@ transform = Transform3D(-0.046930265, 0.010960885, 0.2961036, 0.0002863238, 0.29
 [node name="AudioStreamPlayer3DNoise" type="AudioStreamPlayer3D" parent="Characters" unique_id=336421368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.960711, 3.083035, -20.710903)
 stream = ExtResource("9_p2iis")
+unit_size = 15.0
+
+[node name="AudioStreamPlayer3DHurray" type="AudioStreamPlayer3D" parent="Characters" unique_id=1710355105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.960711, 3.083035, -20.710903)
+stream = ExtResource("12_k8wd0")
+unit_size = 15.0
+
+[node name="AudioStreamPlayer3DRiot" type="AudioStreamPlayer3D" parent="Characters" unique_id=1687597920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.960711, 3.083035, -20.710903)
+stream = ExtResource("13_j7vgi")
 unit_size = 15.0
 
 [node name="Props" type="Node3D" parent="." unique_id=2010207608]
@@ -375,10 +387,14 @@ transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7225013, 0.33085033, -7.390156)
 
 [connection signal="attacked" from="Player" to="." method="_on_player_attacked"]
+[connection signal="hit_head" from="Player" to="." method="_on_player_hit_head"]
+[connection signal="hit_other" from="Player" to="." method="_on_player_hit_other"]
 [connection signal="hovering" from="Player" to="." method="_on_player_hovering"]
 [connection signal="finished" from="BackgroundMusicPlayer" to="." method="_on_background_music_player_finished"]
 [connection signal="timeout" from="TimerMusic" to="." method="_on_timer_music_timeout"]
 [connection signal="finished" from="Characters/AudioStreamPlayer3DNoise" to="." method="_on_audio_stream_player_3d_noise_finished"]
+[connection signal="finished" from="Characters/AudioStreamPlayer3DHurray" to="." method="_on_audio_stream_player_3d_noise_finished"]
+[connection signal="finished" from="Characters/AudioStreamPlayer3DRiot" to="." method="_on_audio_stream_player_3d_noise_finished"]
 [connection signal="body_entered" from="Props/Execution/Area3D" to="Player" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Props/Execution/Area3D" to="Player" method="_on_area_3d_body_exited"]
 

@@ -8,6 +8,9 @@ extends Node3D
 @onready var timer_music: Timer = $TimerMusic
 @onready var audio_stream_player_noise: AudioStreamPlayer3D = $Characters/AudioStreamPlayer3DNoise
 
+@onready var audio_stream_player_hurray: AudioStreamPlayer3D = $Characters/AudioStreamPlayer3DHurray
+@onready var audio_stream_player_riot: AudioStreamPlayer3D = $Characters/AudioStreamPlayer3DRiot
+
 var tween_noise: Tween ## Tween to tween the volume of crowd noise
 
 var used_at_start_menu: bool = false
@@ -49,7 +52,7 @@ func _on_player_hovering() -> void:
 		tween_noise.kill()
 
 	tween_noise = create_tween()
-	tween_noise.tween_property(audio_stream_player_noise, "volume_db", -80, 5.0)
+	tween_noise.tween_property(audio_stream_player_noise, "volume_db", -40, 5.0)
 
 
 func _on_player_attacked() -> void:
@@ -58,3 +61,17 @@ func _on_player_attacked() -> void:
 
 	tween_noise = create_tween()
 	tween_noise.tween_property(audio_stream_player_noise, "volume_db", 0, 3.5)
+
+
+func _on_player_hit_head() -> void:
+	if audio_stream_player_riot.playing:
+		audio_stream_player_riot.stop()
+
+	audio_stream_player_hurray.play()
+
+
+func _on_player_hit_other() -> void:
+	if audio_stream_player_hurray.playing:
+		audio_stream_player_hurray.stop()
+
+	audio_stream_player_riot.play()
