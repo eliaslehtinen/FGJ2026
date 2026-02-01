@@ -11,6 +11,8 @@ extends Node3D
 @onready var audio_stream_player_hurray: AudioStreamPlayer3D = $Characters/AudioStreamPlayer3DHurray
 @onready var audio_stream_player_riot: AudioStreamPlayer3D = $Characters/AudioStreamPlayer3DRiot
 
+@onready var audio_uhrin_huuto: AudioStreamPlayer3D = $Characters/UhrinHuuto
+
 @onready var men: Node3D = $Men
 var last_man_killed: Man
 @onready var timer_man_respawn: Timer = $TimerManRespawn
@@ -104,6 +106,7 @@ func _on_player_hit_other() -> void:
 		audio_stream_player_hurray.stop()
 
 	audio_stream_player_riot.play()
+	audio_uhrin_huuto.play()
 
 
 func _on_timer_man_respawn_timeout() -> void:

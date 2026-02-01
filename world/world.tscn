@@ -12,13 +12,18 @@
 [ext_resource type="PackedScene" uid="uid://d01qcvy8lw52f" path="res://world/character.tscn" id="8_j34ew"]
 [ext_resource type="PackedScene" uid="uid://bnugpcq32l1bt" path="res://graphics/3d/barrel.blend" id="9_mad0u"]
 [ext_resource type="AudioStream" uid="uid://biufcbe77uouk" path="res://sounds/taustamelu.wav" id="9_p2iis"]
+[ext_resource type="AudioStream" uid="uid://dtvt6asrbob5t" path="res://sounds/uhri_huuto_1.wav" id="10_lwhbe"]
 [ext_resource type="PackedScene" uid="uid://cnieisctv7u27" path="res://world/castle_door_with_material.tscn" id="10_mad0u"]
+[ext_resource type="AudioStream" uid="uid://bnbd2moy16f58" path="res://sounds/uhri_huuto_2.wav" id="11_ftqqi"]
 [ext_resource type="PackedScene" uid="uid://2pubwjgqab6s" path="res://world/castle_tower_with_material.tscn" id="11_ocfjn"]
+[ext_resource type="AudioStream" uid="uid://du6ixr240q5am" path="res://sounds/uhri_huuto_3.wav" id="12_avd5l"]
 [ext_resource type="PackedScene" uid="uid://duoulfqt8q68d" path="res://world/castle_wall_with_material.tscn" id="12_dqqhb"]
 [ext_resource type="AudioStream" uid="uid://x7deu2a33fyp" path="res://sounds/yleiso_hurraus.wav" id="12_k8wd0"]
 [ext_resource type="AudioStream" uid="uid://cp4ovbl35jqi7" path="res://sounds/yleiso_melu.wav" id="13_j7vgi"]
+[ext_resource type="AudioStream" uid="uid://dcokvclyu4n" path="res://sounds/uhri_huuto_4.wav" id="13_ll3gq"]
 [ext_resource type="PackedScene" uid="uid://juam5berkyu1" path="res://world/castle_tower_with_material_large.tscn" id="13_ocfjn"]
 [ext_resource type="PackedScene" uid="uid://u8cq57cya00a" path="res://graphics/3d/cabin.blend" id="14_dqqhb"]
+[ext_resource type="AudioStream" uid="uid://dq6tce1ty26kg" path="res://sounds/uhri_huuto_5.wav" id="14_jgi7c"]
 [ext_resource type="PackedScene" uid="uid://d0cufsfm1oith" path="res://graphics/3d/flagpole.blend" id="16_h8lre"]
 [ext_resource type="PackedScene" uid="uid://bpj8d2h8ds273" path="res://graphics/3d/market_stand.blend" id="17_ysn08"]
 [ext_resource type="PackedScene" uid="uid://d2kidjca25poy" path="res://graphics/3d/wood_house.blend" id="21_gi7ib"]
@@ -147,6 +152,16 @@ uv_scale = 0.3
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_mmdvd")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_tcf2h")])
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cqwbg"]
+streams_count = 5
+stream_0/stream = ExtResource("10_lwhbe")
+stream_1/stream = ExtResource("11_ftqqi")
+stream_2/stream = ExtResource("12_avd5l")
+stream_2/weight = 2.0
+stream_3/stream = ExtResource("13_ll3gq")
+stream_3/weight = 2.0
+stream_4/stream = ExtResource("14_jgi7c")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_fn3g3"]
 size = Vector3(7.1882324, 0.01, 6)
 
@@ -260,6 +275,10 @@ unit_size = 15.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.960711, 3.083035, -20.710903)
 stream = ExtResource("13_j7vgi")
 unit_size = 15.0
+
+[node name="UhrinHuuto" type="AudioStreamPlayer3D" parent="Characters" unique_id=39063710]
+transform = Transform3D(-0.9998456, 1.5745745e-07, -0.01757368, 0.017563393, 0.03421764, -0.9992601, 0.00060117245, -0.9994144, -0.034212362, 6.1399417, 2.826474, -20.821974)
+stream = SubResource("AudioStreamRandomizer_cqwbg")
 
 [node name="Props" type="Node3D" parent="." unique_id=2010207608]
 
