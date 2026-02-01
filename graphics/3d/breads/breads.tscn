@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqomx1vawxu6"]
+
+[ext_resource type="PackedScene" uid="uid://dyyy0ujjnekhu" path="res://graphics/3d/breads/breads.blend" id="1_d5yt4"]
+[ext_resource type="Texture2D" uid="uid://daltbfsk60348" path="res://graphics/3d/breads/patonki_texture Diffuse Color.png" id="2_2wqrr"]
+[ext_resource type="Texture2D" uid="uid://b7mb8yua8q0qd" path="res://graphics/3d/breads/rue_bread_round.png" id="3_515m4"]
+[ext_resource type="Texture2D" uid="uid://qwstotocoxk3" path="res://graphics/3d/breads/full_toast.png" id="4_x16gh"]
+[ext_resource type="Texture2D" uid="uid://cvwwxjj2vuvwc" path="res://graphics/3d/breads/ring_bread.png" id="5_o8ppe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esgki"]
+albedo_texture = ExtResource("2_2wqrr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wcac"]
+albedo_texture = ExtResource("3_515m4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rqqq"]
+albedo_texture = ExtResource("4_x16gh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwwah"]
+albedo_texture = ExtResource("5_o8ppe")
+
+[node name="breads" instance=ExtResource("1_d5yt4")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="baguette" parent="." index="0"]
+transform = Transform3D(0.00706853, 0, -0.999975, 0, 1, 0, 0.999975, 0, 0.00706853, -0.089, 0, -3.184)
+material_override = SubResource("StandardMaterial3D_esgki")
+
+[node name="rue_bread" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.23599)
+material_override = SubResource("StandardMaterial3D_4wcac")
+
+[node name="full_toast" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.386351, 0.608668, -6.71751)
+material_override = SubResource("StandardMaterial3D_6rqqq")
+
+[node name="oat_bread" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.039)
+
+[node name="ring-bread" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.744218, -0.155228, 0.26841)
+material_override = SubResource("StandardMaterial3D_vwwah")
+
+[node name="table" parent="." index="5"]
+visible = false
+
+[node name="toast" parent="." index="6"]
+transform = Transform3D(-0.818458, 0, 1.23584e-07, 0, 0.818458, 0, -1.23584e-07, 0, -0.818458, 1.52896, 0, 0)
+visible = false
