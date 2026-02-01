@@ -10,7 +10,6 @@ const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tsc
 @onready var weapon_holder: WeaponHolder = $WeaponHolder
 @onready var drag_point: Node3D = $DragPoint
 
-@onready var audio_walk: AudioStreamPlayer = $AudioWalk
 
 @export_group("Movement stats")
 @export var speed: float = 6.5
@@ -24,6 +23,10 @@ const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tsc
 @export var headbob_frequency := 2.0
 @export var headbob_amplitude := 0.05
 var headbob_time := 0.0
+
+@onready var audio_walk_ground: AudioStreamPlayer = $AudioWalkGround
+@onready var audio_walk_wood: AudioStreamPlayer = $AudioWalkWood
+var is_on_wood: bool = false
 
 const SENSITIVTY_DIVIDER: int = 100
 var gravity_multiplier: float = 1.2
@@ -218,23 +221,23 @@ func _physics_process(delta: float) -> void:
 		attacking()
 		return
 
-	if Input.is_action_just_pressed("drag"):
-		if ray_cast.is_colliding():
-			if dragged_man:
-				dragged_man = null
-				return
+	#if Input.is_action_just_pressed("drag"):
+	#	if ray_cast.is_colliding():
+	#		if dragged_man:
+	#			dragged_man = null
+	#			return
 
-			print("Colliding with man")
-			var collider: Object = ray_cast.get_collider()
-			var _owner = collider.owner
-			if _owner is Man and not dragged_man:
-				print("Assigned dragged man", _owner)
-				dragged_man = _owner
+	#		print("Colliding with man")
+	#		var collider: Object = ray_cast.get_collider()
+	#		var _owner = collider.owner
+	#		if _owner is Man and not dragged_man:
+	#			print("Assigned dragged man", _owner)
+	#			dragged_man = _owner
 
-	if dragged_man:
-		dragged_man.first_bone
-		dragged_man.global_position = dragged_man.global_position.lerp( \
-			drag_point.global_position, delta * 5.0)
+	#if dragged_man:
+	#	dragged_man.first_bone
+	#	dragged_man.global_position = dragged_man.global_position.lerp( \
+	#		drag_point.global_position, delta * 5.0)
 
 	if not is_on_floor():
 		velocity += get_gravity() * gravity_multiplier * delta
@@ -256,10 +259,19 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
-	move_and_slide()
+	if velocity != Vector3.ZERO and is_on_floor():
+		print(is_on_wood)
+		if is_on_wood and not audio_walk_wood.playing:
+			audio_walk_wood.play()
+			print("play wood")
+		elif not audio_walk_ground.playing:
+			audio_walk_ground.play()
+			print("play ground")
 
 	headbob_time += delta * velocity.length() * float(is_on_floor())
 	$CameraHolder/Camera3D.transform.origin = headbob(headbob_time)
+
+	move_and_slide()
 
 
 func headbob(hb_time: float) -> Vector3:
@@ -267,3 +279,11 @@ func headbob(hb_time: float) -> Vector3:
 	headbob_position.y = sin(hb_time * headbob_frequency) * headbob_amplitude
 	headbob_position.x = sin(hb_time * headbob_frequency / 2) * headbob_amplitude
 	return headbob_position
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	is_on_wood = true
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	is_on_wood = false
