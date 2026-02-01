@@ -22,7 +22,7 @@ height = 1.8
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yw30f"]
-size = Vector3(6.3188553, 0.37841797, 4.3054504)
+size = Vector3(8.758183, 0.37841797, 5.966202)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_65viv"]
 streams_count = 4
@@ -87,7 +87,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WeaponHolder/axe/Area3D" unique_id=1084505521]
-transform = Transform3D(0.9999999, 0, 0, -2.3841858e-07, 1, 0, -5.9604645e-08, 0, 1, 0.92531776, -0.046902776, -5.1428976)
+transform = Transform3D(0.9999999, 0, 0, -2.3841858e-07, 1, 0, -5.9604645e-08, 0, 1, 2.1449814, -0.046902418, -5.9732723)
 shape = SubResource("BoxShape3D_yw30f")
 
 [node name="LabelState" type="Label" parent="." unique_id=1190063454]

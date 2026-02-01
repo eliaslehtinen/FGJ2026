@@ -1,0 +1,354 @@
+[gd_scene format=3 uid="uid://dc844wcasmwtp"]
+
+[ext_resource type="PackedScene" uid="uid://d0thv83qywg80" path="res://player/player.tscn" id="1_6xmxd"]
+[ext_resource type="Script" uid="uid://cuypqiviyjwoo" path="res://world/world.gd" id="1_tcf2h"]
+[ext_resource type="PackedScene" uid="uid://dm2iihrb58r76" path="res://world/world_ui.tscn" id="2_ai45w"]
+[ext_resource type="Shader" uid="uid://d2bmjh6ikr163" path="res://shaders/sky.gdshader" id="2_fn3g3"]
+[ext_resource type="Texture2D" uid="uid://idw5jdl15xgs" path="res://graphics/textures/rockground_seamless_DIFF.png" id="4_mad0u"]
+[ext_resource type="PackedScene" uid="uid://dlkeslx618x5g" path="res://graphics/3d/Execution.blend" id="5_mmdvd"]
+[ext_resource type="Texture2D" uid="uid://dyjndf0d40vmi" path="res://graphics/textures/rockground_seamless_NORMAL.png" id="5_ocfjn"]
+[ext_resource type="PackedScene" uid="uid://bvtyty06lexgg" path="res://graphics/3d/cabbage_wagon.blend" id="7_sc4t8"]
+[ext_resource type="PackedScene" uid="uid://d01qcvy8lw52f" path="res://world/character.tscn" id="8_j34ew"]
+[ext_resource type="PackedScene" uid="uid://bnugpcq32l1bt" path="res://graphics/3d/barrel.blend" id="9_mad0u"]
+[ext_resource type="AudioStream" uid="uid://biufcbe77uouk" path="res://sounds/taustamelu.wav" id="9_p2iis"]
+[ext_resource type="PackedScene" uid="uid://cnieisctv7u27" path="res://world/castle_door_with_material.tscn" id="10_mad0u"]
+[ext_resource type="PackedScene" uid="uid://2pubwjgqab6s" path="res://world/castle_tower_with_material.tscn" id="11_ocfjn"]
+[ext_resource type="PackedScene" uid="uid://duoulfqt8q68d" path="res://world/castle_wall_with_material.tscn" id="12_dqqhb"]
+[ext_resource type="PackedScene" uid="uid://juam5berkyu1" path="res://world/castle_tower_with_material_large.tscn" id="13_ocfjn"]
+[ext_resource type="PackedScene" uid="uid://u8cq57cya00a" path="res://graphics/3d/cabin.blend" id="14_dqqhb"]
+[ext_resource type="PackedScene" uid="uid://s5c4vpug6dn" path="res://skeletor/skeletor.tscn" id="15_b2suy"]
+[ext_resource type="PackedScene" uid="uid://d0cufsfm1oith" path="res://graphics/3d/flagpole.blend" id="16_h8lre"]
+[ext_resource type="PackedScene" uid="uid://bpj8d2h8ds273" path="res://graphics/3d/market_stand.blend" id="17_ysn08"]
+[ext_resource type="AudioStream" uid="uid://cs2fqhkij8on1" path="res://sounds/taustamusiikki.wav" id="23_3ljsx"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h5o24"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h5o24"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_h5o24")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_mmdvd"]
+offsets = PackedFloat32Array(0.19499986, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mmdvd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mmdvd"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_mmdvd")
+color_ramp = SubResource("Gradient_mmdvd")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmdvd"]
+shader = ExtResource("2_fn3g3")
+shader_parameter/sky_top_color = Color(0.17656538, 0.48176306, 0.53826636, 1)
+shader_parameter/sky_horizon_color = Color(0.78210056, 0.9202193, 0.9990614, 1)
+shader_parameter/inv_sky_curve = 3.03143416908606
+shader_parameter/ground_bottom_color = Color(0.68435925, 0.82960063, 0.89274985, 1)
+shader_parameter/ground_horizon_color = Color(0.79727834, 0.8026069, 0.8132582, 1)
+shader_parameter/inv_ground_curve = 30.000000670552268
+shader_parameter/sun_angle_max = 0.8660254
+shader_parameter/inv_sun_curve = 22.782017
+shader_parameter/exposure = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/cloud_texture1 = SubResource("NoiseTexture2D_h5o24")
+shader_parameter/cloud_texture2 = SubResource("NoiseTexture2D_mmdvd")
+shader_parameter/cloud_direction1 = Vector2(-1, 1)
+shader_parameter/cloud_direction2 = Vector2(1, -1)
+shader_parameter/cloud_scale = Vector2(0.07, 0.06)
+shader_parameter/cloud_distance = 0.035
+shader_parameter/cloud_speed1 = 0.001
+shader_parameter/cloud_speed2 = 0.003
+
+[sub_resource type="Sky" id="Sky_4717r"]
+sky_material = SubResource("ShaderMaterial_mmdvd")
+
+[sub_resource type="Environment" id="Environment_tcf2h"]
+background_mode = 2
+background_energy_multiplier = 0.7
+sky = SubResource("Sky_4717r")
+
+[sub_resource type="Gradient" id="Gradient_g312j"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6xmxd"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tcf2h"]
+noise = SubResource("FastNoiseLite_6xmxd")
+color_ramp = SubResource("Gradient_g312j")
+seamless = true
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_4717r"]
+_shader_parameters = {
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.5,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"flat_terrain_normals": false,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise_texture": SubResource("NoiseTexture2D_tcf2h"),
+&"projection_threshold": 0.8
+}
+world_background = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5o24"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_mmdvd"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_h5o24")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_tcf2h"]
+name = "dirt_ground_DIFF"
+albedo_texture = ExtResource("4_mad0u")
+normal_texture = ExtResource("5_ocfjn")
+uv_scale = 0.3
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_fn3g3"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_mmdvd")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_tcf2h")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fn3g3"]
+size = Vector3(7.1882324, 0.01, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aysyn"]
+size = Vector3(25.765915, 16.65747, 19.146729)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_inp7a"]
+size = Vector3(6.0770264, 4.701538, 4.850395)
+
+[node name="World" type="Node3D" unique_id=1578379085]
+script = ExtResource("1_tcf2h")
+
+[node name="WorldUI" parent="." unique_id=1036882639 instance=ExtResource("2_ai45w")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1992858761]
+environment = SubResource("Environment_tcf2h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=174881653]
+transform = Transform3D(0.7809104, -0.568469, -0.25888655, 1.40271625e-08, -0.41445503, 0.9100698, -0.62464327, -0.710683, -0.3236522, 0, 10.613327, 0)
+light_color = Color(0.85223806, 0.7068773, 0.48220432, 1)
+shadow_enabled = true
+
+[node name="Terrain3D" type="Terrain3D" parent="." unique_id=1138636014]
+data_directory = "res://terrain3d_data"
+material = SubResource("Terrain3DMaterial_4717r")
+assets = SubResource("Terrain3DAssets_fn3g3")
+collision_mode = 4
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." unique_id=652687026 instance=ExtResource("1_6xmxd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702957, 1.4977808, 0)
+speed = 5.0
+sprint_speed = 7.0
+sensitivity = 6.0
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=252146769]
+stream = ExtResource("23_3ljsx")
+volume_db = -10.0
+
+[node name="TimerMusic" type="Timer" parent="." unique_id=1255243585]
+wait_time = 10.0
+one_shot = true
+
+[node name="Skeletor" parent="." unique_id=1062086467 instance=ExtResource("15_b2suy")]
+transform = Transform3D(0.99877006, 0, -0.049581923, 0.04597027, 0.37467134, 0.92601746, 0.018576927, -0.9271578, 0.37421054, 5.6536055, 0.28456736, 0)
+
+[node name="Characters" type="Node3D" parent="." unique_id=1306213942]
+
+[node name="character" parent="Characters" unique_id=1767799220 instance=ExtResource("8_j34ew")]
+transform = Transform3D(0.17456876, 0, 0.24397898, 0, 0.29999998, 0, -0.24397898, 0, 0.17456876, 13.360588, 1.3897436, -15.859424)
+
+[node name="character2" parent="Characters" unique_id=1043273711 instance=ExtResource("8_j34ew")]
+transform = Transform3D(-0.0077693462, 0, 0.29989934, 0, 0.29999995, 0, -0.29989934, 0, -0.0077693462, 13.360588, 1.3897436, -19.410503)
+
+[node name="character3" parent="Characters" unique_id=1233271535 instance=ExtResource("8_j34ew")]
+transform = Transform3D(0.058470596, 0.010784477, 0.29404905, 0.00028632372, 0.29979616, -0.011052191, -0.29424658, 0.0024347382, 0.05842058, 13.360588, 1.3897436, -23.184519)
+
+[node name="character4" parent="Characters" unique_id=216360790 instance=ExtResource("8_j34ew")]
+transform = Transform3D(0.0026284643, 0.011049264, 0.29978484, 0.00028632383, 0.29979613, -0.01105219, -0.29998824, 0.00038295262, 0.0026161224, 13.360588, 1.3897436, -26.174109)
+
+[node name="character5" parent="Characters" unique_id=1388874368 instance=ExtResource("8_j34ew")]
+transform = Transform3D(0.10775474, 0, 0.27998015, 0, 0.29999995, 0, -0.27998015, 0, 0.10775474, 15.693399, 1.3897436, -16.88344)
+
+[node name="character9" parent="Characters" unique_id=1025136674 instance=ExtResource("8_j34ew")]
+transform = Transform3D(0.15682988, 0, 0.25574273, 0, 0.29999992, 0, -0.25574273, 0, 0.15682988, 14.895569, 1.3897445, -14.958737)
+
+[node name="character6" parent="Characters" unique_id=206853711 instance=ExtResource("8_j34ew")]
+transform = Transform3D(-0.0077693453, 4.1633357e-18, 0.2998993, 0.031108553, 0.2983816, 0.00080591405, -0.29828152, 0.031118987, -0.0077274335, 15.732809, 1.3897436, -19.883305)
+
+[node name="character7" parent="Characters" unique_id=334117933 instance=ExtResource("8_j34ew")]
+transform = Transform3D(-0.07651213, 0.010759678, 0.2898794, 0.00028632383, 0.29979613, -0.01105219, -0.29007888, -0.002542092, -0.07647045, 16.177996, 1.3897436, -23.184519)
+
+[node name="character8" parent="Characters" unique_id=1155489087 instance=ExtResource("8_j34ew")]
+transform = Transform3D(-0.046930265, 0.010960885, 0.2961036, 0.0002863238, 0.2997961, -0.011052189, -0.29630622, -0.0014463363, -0.046908855, 16.344652, 1.3897436, -27.917505)
+
+[node name="AudioStreamPlayer3DNoise" type="AudioStreamPlayer3D" parent="Characters" unique_id=336421368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.960711, 3.083035, -20.710903)
+stream = ExtResource("9_p2iis")
+volume_db = -5.0
+max_distance = 100.0
+
+[node name="Props" type="Node3D" parent="." unique_id=2010207608]
+
+[node name="Execution" parent="Props" unique_id=1415614088 instance=ExtResource("5_mmdvd")]
+transform = Transform3D(0.022088706, 0, 0.49951184, 0, 0.5, 0, -0.49951184, 0, 0.022088706, 3.8007097, 2.8975663, -15.404228)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Execution" unique_id=219598673]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Execution/StaticBody3D" unique_id=1386336800]
+transform = Transform3D(-0.82404727, 0.5665212, 0, -0.5665214, -0.8240469, 0, 0, 0, 1, -3.9563236, -3.5118487, -5.2983)
+shape = SubResource("BoxShape3D_fn3g3")
+
+[node name="Area3D" type="Area3D" parent="Props/Execution" unique_id=1548717401]
+transform = Transform3D(1.0000006, 0, 0, 0, 1, 0, 0, 0, 1.0000006, 0.16288567, 0, 3.6835537)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Execution/Area3D" unique_id=858152359]
+transform = Transform3D(0.99999535, 0, -1.7508864e-06, 0, 1, 0, 1.7508864e-06, 0, 0.99999535, 12.592823, 0.5513916, -3.6853504)
+shape = SubResource("BoxShape3D_aysyn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Props/Execution/Area3D" unique_id=15219147]
+transform = Transform3D(0.9999994, 0, -1.3150275e-06, 0, 1, 0, 1.3150275e-06, 0, 0.9999994, -2.1978054, -0.8699422, -9.090393)
+shape = SubResource("BoxShape3D_inp7a")
+
+[node name="cabbage_wagon2" parent="Props" unique_id=596352397 instance=ExtResource("7_sc4t8")]
+transform = Transform3D(1.0722383, 0.24473044, 0.020292379, -0.24526076, 1.071787, 0.03346566, -0.012326401, -0.037145536, 1.0993035, 28.175604, 0.9563661, -31.228123)
+
+[node name="cabbage_wagon3" parent="Props" unique_id=251711617 instance=ExtResource("7_sc4t8")]
+transform = Transform3D(-0.2643944, -0.027173383, -1.0674068, -0.24526072, 1.071787, 0.03346567, 1.0392029, 0.24603735, -0.26367182, 20.827991, 0.9563661, -31.228123)
+
+[node name="barrel" parent="Props" unique_id=1474903304 instance=ExtResource("9_mad0u")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.0582244, 1.1689318, -6.2791395)
+
+[node name="barrel2" parent="Props" unique_id=398858978 instance=ExtResource("9_mad0u")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 32.23976, 0.71383107, -28.449535)
+
+[node name="barrel3" parent="Props" unique_id=683541685 instance=ExtResource("9_mad0u")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 32.23976, 0.45299804, -27.271513)
+
+[node name="barrel4" parent="Props" unique_id=997668475 instance=ExtResource("9_mad0u")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 30.348688, 0.7138494, -27.271513)
+
+[node name="barrel6" parent="Props" unique_id=504654767 instance=ExtResource("9_mad0u")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 11.515493, 0.7405963, -27.271513)
+
+[node name="barrel7" parent="Props" unique_id=845408646 instance=ExtResource("9_mad0u")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5.932706, 0.97250545, -13.707991)
+
+[node name="barrel5" parent="Props" unique_id=1131982270 instance=ExtResource("9_mad0u")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 30.348688, 0.7138406, -29.271513)
+
+[node name="castle_door" parent="Props" unique_id=2044023833 instance=ExtResource("10_mad0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.928472, 1.077335, -81.01864)
+
+[node name="castle_tower_with_material" parent="Props" unique_id=650376445 instance=ExtResource("11_ocfjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.532148, 0.8505306, -75.69677)
+
+[node name="castle_tower_with_material2" parent="Props" unique_id=213519224 instance=ExtResource("11_ocfjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.387505, 0.8505306, -75.65664)
+
+[node name="castle_wall_with_material" parent="Props" unique_id=1537656000 instance=ExtResource("12_dqqhb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.807348, 1, -53.207623)
+
+[node name="castle_wall_with_material2" parent="Props" unique_id=220051453 instance=ExtResource("12_dqqhb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.781797, 1.1091915, -17.220613)
+
+[node name="castle_wall_with_material3" parent="Props" unique_id=2040802492 instance=ExtResource("12_dqqhb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.810838, 1.0001973, 18.760885)
+
+[node name="castle_wall_with_material4" parent="Props" unique_id=826323191 instance=ExtResource("12_dqqhb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 43.73394, 1, -53.198383)
+
+[node name="castle_wall_with_material5" parent="Props" unique_id=140813022 instance=ExtResource("12_dqqhb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 43.74503, 1, -17.191366)
+
+[node name="castle_wall_with_material6" parent="Props" unique_id=557738826 instance=ExtResource("12_dqqhb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 43.729134, 0.9999981, 18.789215)
+
+[node name="castle_tower_with_material_large" parent="Props" unique_id=1584636887 instance=ExtResource("13_ocfjn")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 55.523888, 1.7010612, 42.759132)
+
+[node name="castle_tower_with_material_large2" parent="Props" unique_id=490533577 instance=ExtResource("13_ocfjn")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -27.653986, 1.7010651, 42.727283)
+
+[node name="castle_wall_with_material7" parent="Props" unique_id=1435603625 instance=ExtResource("12_dqqhb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.666975, 1, 30.896526)
+
+[node name="castle_wall_with_material8" parent="Props" unique_id=915863104 instance=ExtResource("12_dqqhb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.301486, 1, 30.958164)
+
+[node name="castle_wall_with_material7" parent="Props/castle_wall_with_material8" unique_id=976214892 instance=ExtResource("12_dqqhb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.01508, 9.580503, -0.089702606)
+
+[node name="castle_wall_with_material8" parent="Props/castle_wall_with_material8" unique_id=290833869 instance=ExtResource("12_dqqhb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04661846, 9.580503, -0.028064728)
+
+[node name="cabin" parent="Props" unique_id=1631016941 instance=ExtResource("14_dqqhb")]
+transform = Transform3D(-0.17636307, 0, 1.9922088, 0, 2, 0, -1.9922088, 0, -0.17636307, 27.34597, 0, -52.950176)
+
+[node name="cabin2" parent="Props" unique_id=1024663106 instance=ExtResource("14_dqqhb")]
+transform = Transform3D(-0.17636307, 0, 1.9922088, 0, 2, 0, -1.9922088, 0, -0.17636307, 27.34597, 0, -40.831078)
+
+[node name="flagpole" parent="Props" unique_id=1047949225 instance=ExtResource("16_h8lre")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.1146145, 2.6148899, -30.629011)
+
+[node name="flagpole2" parent="Props" unique_id=443437198 instance=ExtResource("16_h8lre")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.1146145, 2.6148899, -20.10859)
+
+[node name="flagpole3" parent="Props" unique_id=2037246226 instance=ExtResource("16_h8lre")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.1146145, 2.6148899, -8.705803)
+
+[node name="market_stand" parent="Props" unique_id=820778545 instance=ExtResource("17_ysn08")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -56.278778)
+
+[node name="market_stand2" parent="Props" unique_id=1808342286 instance=ExtResource("17_ysn08")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -49.386116)
+
+[node name="market_stand3" parent="Props" unique_id=474739654 instance=ExtResource("17_ysn08")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -42.638935)
+
+[node name="market_stand4" parent="Props" unique_id=1084200816 instance=ExtResource("17_ysn08")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.564, -0.14897585, -36.929012)
+
+[connection signal="finished" from="BackgroundMusicPlayer" to="." method="_on_background_music_player_finished"]
+[connection signal="timeout" from="TimerMusic" to="." method="_on_timer_music_timeout"]
+[connection signal="finished" from="Characters/AudioStreamPlayer3DNoise" to="." method="_on_audio_stream_player_3d_noise_finished"]
+[connection signal="body_entered" from="Props/Execution/Area3D" to="Player" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Props/Execution/Area3D" to="Player" method="_on_area_3d_body_exited"]
+
+[editable path="Props/market_stand2"]

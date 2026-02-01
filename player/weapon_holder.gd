@@ -2,6 +2,7 @@ extends Node3D
 class_name WeaponHolder
 
 const BLOOD_PARTICLES: PackedScene = preload("res://particles/blood_particle.tscn")
+const BLOOD_SOUND: PackedScene = preload("res://particles/blood_sound.tscn")
 
 @onready var axe: Node3D = $axe
 
@@ -19,6 +20,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			var particles := BLOOD_PARTICLES.instantiate()
 			get_tree().root.add_child(particles)
 			particles.global_position = body.global_position
+
+			var blood_sound := BLOOD_SOUND.instantiate()
+			get_tree().root.add_child(blood_sound)
+			blood_sound.global_position = body.global_position
+
 			$axe/AudioStreamPlayer3DHit.play()
 
 		print(body.name)

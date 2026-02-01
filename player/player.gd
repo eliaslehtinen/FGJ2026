@@ -179,14 +179,14 @@ func attacking() -> void:
 			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(65), 0.4).from_current()
 
 			## Swing
-			attack_tween.chain().tween_property(camera_holder, "rotation:x", deg_to_rad(-30), 0.15).set_delay(0.05)
+			attack_tween.chain().tween_property(camera_holder, "rotation:x", deg_to_rad(-70), 0.15).set_delay(0.05)
 			attack_tween.tween_property(weapon_holder, "rotation:x", deg_to_rad(-80), 0.2)
 			attack_tween.tween_property(weapon_holder, "rotation:z", deg_to_rad(0), 0.2)
 			await attack_tween.finished
 			print("Tween attack finish")
-			weapon_area.monitoring = false
 			timer_attack.start()
 			await timer_attack.timeout
+			weapon_area.monitoring = false
 
 			## Reset, tween these?
 			reset_weapon_transforms()
@@ -262,10 +262,10 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	if velocity != Vector3.ZERO and is_on_floor():
-		print(is_on_wood)
-		if is_on_wood and not audio_walk_wood.playing:
-			audio_walk_wood.play()
-			print("play wood")
+		if is_on_wood:
+			if not audio_walk_wood.playing:
+				audio_walk_wood.play()
+				print("play wood")
 		elif not audio_walk_ground.playing:
 			audio_walk_ground.play()
 			print("play ground")
